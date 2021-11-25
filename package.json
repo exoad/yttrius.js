@@ -40,10 +40,10 @@
     "start": "node .",
     "legend": "./app.js"
   },
-  "author": "",
+  "author": "exoad",
   "license": "ISC",
-  "description": "",
+  "description": "Yttrius a Discord Bot",
   "repository": {
-    "url": "https://github.com/exoad/yAPI"
+    "url": "https://github.com/exoad/yttrius"
   }
 }
