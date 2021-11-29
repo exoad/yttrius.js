@@ -25,13 +25,13 @@ module.exports = {
                     ":inbox_tray: Throughout: ",
                     `\`\`\`js\n${clean(evaled)}\n\`\`\``
                 );
-            message.channel.send({ embed });
+            message.channel.send({ embeds :[embed] });
         } catch (err) {
             const embed = new MessageEmbed()
                 .setColor(0x1fd66e)
                 .addField(":outbox_tray: In: ", `\`\`\`js\n${code}\`\`\``)
                 .addField(":outbox_tray: Out: ", `\`\`\`js\n${clean(err)}\`\`\``);
-            message.channel.send({ embed });
+            message.channel.send({ embeds : [embed] });
         }
 
         function clean(text) {

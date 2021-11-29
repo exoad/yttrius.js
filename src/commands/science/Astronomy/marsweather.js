@@ -23,7 +23,7 @@ module.exports = {
             let marsDataVal = await getMarsData();
             let sol = marsDataVal.sol_keys[6];
             let lastestTemp = marsDataVal[sol].AT.av;
-            msg.reply(
+            message.reply(
                 "Latest temperature from NASA's InSight Mars Lander at Elysium Planitia: " +
                 lastestTemp +
                 "°C"
@@ -40,7 +40,7 @@ module.exports = {
                     "support` to join the support server!"
                 )
                 .setFooter("Still facing issues? Join the support server!");
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 5000 });
             });
         }

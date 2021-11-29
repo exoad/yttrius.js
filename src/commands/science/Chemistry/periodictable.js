@@ -21,7 +21,7 @@ module.exports = {
                         'periodic ver"'
                     );
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else if (args[0] == "ver") {
                 const embed = new MessageEmbed()
                     .setTitle("Chemistry Periodic Table Versions")
@@ -32,7 +32,7 @@ module.exports = {
                     .addField("Version_Num", "`1, 2, 3, links`")
                     .setFooter("Having troubles? Join the support server!");
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else if (args[0] == "1") {
                 const embed = new MessageEmbed()
                     .setTitle("Chemistry Periodic Table")
@@ -54,7 +54,7 @@ module.exports = {
                         'periodic ver"'
                     );
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else if (args[0] == "3") {
                 const embed = new MessageEmbed()
                     .setTitle("Chemistry Periodic Table")
@@ -65,7 +65,7 @@ module.exports = {
                         'periodic ver"'
                     );
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else if (args[0] == "link" || args[0] == "links") {
                 const embed = new MessageEmbed()
                     .setTitle("Periodic Table Version Links")
@@ -73,18 +73,7 @@ module.exports = {
                         "Links List:\n[Link 1](https://schooltutoring.com/help/wp-content/uploads/sites/2/2019/02/Periodic_Table_Of_Elements.svg_.png)\n[Link 2](https://upload.wikimedia.org/wikipedia/commons/4/4d/Periodic_table_large.svg)"
                     );
 
-                message.channel.send({ embed });
-            } else {
-                const embed = new MessageEmbed()
-                    .setTitle("Chemistry Periodic Table")
-                    .setImage(resource.periodic1)
-                    .setFooter(
-                        "If the image isn't showing correctly use \"" +
-                        config.prefix +
-                        'periodic ver"'
-                    );
-
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             }
         } catch (err) {
             console.log(err);

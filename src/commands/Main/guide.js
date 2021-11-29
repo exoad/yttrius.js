@@ -23,7 +23,7 @@ module.exports = {
         .addField("Science Commands", "Science commands are of course related in the field of science. This means, in order to use the command correctly, you must know what the command is going to be about. Sometimes they require parameters. In order to see the necessary parameters, just type the initial command out, and the bot will walk you through!")
         .setFooter("WIP | Work in progress! | Have suggestions? Join the support server")
 
-      message.channel.send({embed});
+      message.channel.send({embeds: [embed]});
 
     } catch (err) {
       const embed = new MessageEmbed()
@@ -37,7 +37,7 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
-      message.channel.send({ embed }).then((m) => {
+      message.channel.send({ embeds : [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
       });
     }

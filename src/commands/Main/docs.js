@@ -18,6 +18,7 @@ module.exports = {
   },
   run: async (bot, message, args) => {
     try {
+      message.channel.send("Hmmmm");
       /*
       const db = new Database("db/registry_user.json");
       if (db.has(message.author.id)) {
@@ -81,7 +82,7 @@ module.exports = {
                 "```" + token.prefix + "docs md```"
               )
               .setThumbnail(resource.aw_snap)
-              .setColor(colors.error);
+              .setColor('#e66149');
             message.channel.send({ embed });
           } else if (file_type == "md" || file_type == "markdown") {
             askFile(".md");
@@ -124,7 +125,7 @@ module.exports = {
                 "```" + token.prefix + "docs md```"
               )
               .setThumbnail(resource.aw_snap)
-              .setColor(colors.error);
+              .setColor('#e66149');
             message.channel.send({ embed });
           }
         }
@@ -132,7 +133,7 @@ module.exports = {
         const embed = new MessageEmbed()
           .setTitle("Command only for registered users...")
           .setThumbnail(resource.aw_snap)
-          .setColor(colors.error)
+          .setColor('#e66149')
           .setDescription(
             "Use `" +
               config.prefix +

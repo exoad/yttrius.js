@@ -33,9 +33,9 @@ module.exports = {
                     )
                     .addField("Example Usage", "```" + config.prefix + "molar H2O```")
                     .setFooter("Have questions? Join the support server!")
-                    .setColor(colors.error);
+                    .setColor('#e66149');
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else {
                 const reg = JSON.parse(JSON.stringify(molarcalc.calc(mole)));
                 const embed = new MessageEmbed()
@@ -43,7 +43,7 @@ module.exports = {
                     .addField("Atoms Contents:", reg.atoms)
                     .addField("Molar Mass:", reg.mass);
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             }
         } catch (err) {
             const embed = new MessageEmbed()
@@ -53,7 +53,7 @@ module.exports = {
                     "__**Check the Following:**__\n1. Is letters in your formula capitalized correctly?\n2. Does it contain anything from the exclusion's list?\n3. Make sure it is a valid formula"
                 )
                 .setFooter("Still facing issues? Join the support server!");
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 5000 });
             });
         }

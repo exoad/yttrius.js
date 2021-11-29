@@ -39,9 +39,9 @@ module.exports = {
                         "If nothing is supplied, it will be automatically entered as `today`, otherwise use date formatting: `YYYY-MM-DD`"
                     )
                     .setFooter("Still have questions? Join the support server")
-                    .setColor(colors.error);
+                    .setColor('#e66149');
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else if (!time || time == undefined) {
                 var { body } = await superagent.get(
                     `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&date=today`
@@ -78,7 +78,7 @@ module.exports = {
                         body.results.astronomical_twilight_end
                     );
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else {
                 var { body } = await superagent.get(
                     `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&date=${time}`
@@ -125,7 +125,7 @@ module.exports = {
                         true
                     );
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             }
         } catch (err) {
             bot.channels.cache.get(chnl.errors).send(err.stack);
@@ -144,7 +144,7 @@ module.exports = {
                     "Check the parameters entered"
                 )
                 .setFooter("Still facing issues? Join the support server!");
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 5000 });
             });
         }

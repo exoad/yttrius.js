@@ -23,7 +23,7 @@ module.exports = {
                     .setThumbnail(resource.nasa)
                     .setFooter(`${body.date} | Copyright ${body.copyright}`);
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else if (body.copyright == undefined) {
                 const embed = new MessageEmbed()
                     .setTitle(`${body.title}`)
@@ -32,7 +32,7 @@ module.exports = {
                     .setImage(`${body.hdurl}`)
                     .setFooter(`${body.date}`);
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds: [embed] });
             } else {
                 const embed = new MessageEmbed()
                     .setTitle(`${body.title}`)
@@ -41,7 +41,7 @@ module.exports = {
                     .setImage(`${body.hdurl}`)
                     .setFooter(`${body.date} | Copyright ${body.copyright}`);
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds: [embed] });
             }
         } catch (err) {
             const embed = new MessageEmbed()
@@ -53,7 +53,7 @@ module.exports = {
                     "Use `" + config.prefix + "help` for a list of avaliable commands!"
                 )
                 .setFooter("Still facing issues? Join the support server!");
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 5000 });
             });
         }

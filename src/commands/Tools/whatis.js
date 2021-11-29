@@ -43,7 +43,7 @@ module.exports = {
             .setFooter("Have questions? Join the support server!")
             .setThumbnail(resource.aw_snap);
 
-          message.channel.send({ embed });
+          message.channel.send({ embeds : [embed] });
           bot.channels.cache.get(chnl.whatis).send(toSearch);
         } else if (!profanity.exists(toSearch)) {
           const embed = new MessageEmbed()
@@ -52,7 +52,7 @@ module.exports = {
               "Entered query contained items that are not allowed, please revise your search.**NOTICE THIS COMMAND IS MONITORED**"
             )
             .setFooter("Have questions? Join the support server!");
-          message.channel.send({ embed });
+          message.channel.send({ embeds :[embed] });
           bot.channels.cache
             .get(chnl.whatis)
             .send(
@@ -78,19 +78,6 @@ module.exports = {
             .send(
               `**Author ID:** ${message.author.id}\n**Input:** ${toSearch}`
             );
-        } else {
-          const embed = new MessageEmbed()
-            .setTitle("Whoops looks like you are missing some parameters!")
-            .addField("Usage", "`" + config.prefix + "whatis {item}`")
-            .addField(
-              "Description",
-              "`{item}` is the thing to be searched and this command searches valid arguments and gets valid data from the input"
-            )
-            .setFooter("Have questions? Join the support server!")
-            .setThumbnail(resource.aw_snap);
-
-          message.channel.send({ embed });
-          bot.channels.cache.get(chnl.whatis).send(toSearch);
         }
         talkedRecently.add(message.author.id);
         setTimeout(() => {

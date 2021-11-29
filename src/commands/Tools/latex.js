@@ -41,7 +41,7 @@ module.exports = {
                     .setThumbnail(resource.aw_snap);
 
                 message.channel.send("**This is still an experimental feature!!!**");
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else {
                 message.channel
                     .send(
@@ -59,7 +59,7 @@ module.exports = {
                             .setTitle("Debug Info")
                             .addField(":inbox_tray: Input", "```latex\n" + equ + "```")
                             .addField("Output Errors", "NaN");
-                        message.channel.send({ embed }).then((m) => {
+                        message.channel.send({ embeds : [embed] }).then((m) => {
                             m.delete({ timeout: 5000 });
                         });
                     });
@@ -82,7 +82,7 @@ module.exports = {
                     "support` to join the support server!"
                 )
                 .setFooter("Still facing issues? Join the support server!");
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 5000 });
             });
         }

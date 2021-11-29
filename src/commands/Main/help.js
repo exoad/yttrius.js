@@ -33,7 +33,7 @@ module.exports = {
             .addField("Categories", "```" + list_items + "```")
             .setThumbnail(resource.yet);
 
-          message.channel.send({ embed });
+          message.channel.send({ embeds: [embed] });
         } else {
           const embed = new MessageEmbed()
             .setTitle(menu_name + " Commands")
@@ -47,7 +47,7 @@ module.exports = {
             .addField("Commands", "```" + list_items + "```")
             .setThumbnail(resource.yet);
 
-          message.channel.send({ embed });
+          message.channel.send({ embeds: [embed] });
         }
       }
       if (!cat || cat == undefined) {
@@ -87,7 +87,7 @@ module.exports = {
           .setThumbnail(resource.science)
           .setFooter('The prefix is "' + config.prefix + '"!');
 
-        message.channel.send({ embed });
+        message.channel.send({ emebds: [embed] });
       } else {
         if (
           (cat == "science" || cat == "sci") &&
@@ -134,7 +134,7 @@ module.exports = {
           (!cat_cmd || cat_cmd == undefined)
         )
           makeCommandList("Other", "fun", true);
-        else if(cat == "social")
+        else if (cat == "social")
           makeCommandList("Social", "myaccount, userdocs, register", false);
       }
     } catch (err) {
@@ -148,7 +148,7 @@ module.exports = {
           "Use `" + config.prefix + "help` for a list of avaliable commands!"
         )
         .setFooter("Still facing issues? Join the support server!");
-      message.channel.send({ embed }).then((m) => {
+      message.channel.send({ embeds: [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
       });
     }

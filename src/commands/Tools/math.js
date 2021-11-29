@@ -36,15 +36,15 @@ module.exports = {
                     )
                     .setFooter("Have questions? Join the support server!")
                     .setThumbnail(resource.aw_snap)
-                    .setColor(colors.error);
+                    .setColor('#e66149');
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else {
                 const embed = new MessageEmbed()
                     .addField(":inbox_tray: Input", "```css\n" + toCalc + "```")
                     .addField(":outbox_tray: Output", "```css\n" + body.text + "```");
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             }
         } catch (err) {
             console.log(err);
@@ -57,9 +57,9 @@ module.exports = {
                 .setDescription(
                     "Something went wrong with retrieving the info! This issue will be sent to the developer, so please hold on :)"
                 )
-                .setColor(colors.error);
+                .setColor('#e66149');
 
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 10000 });
             });
         }

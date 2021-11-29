@@ -32,9 +32,9 @@ module.exports = {
                     )
                     .setFooter("Have questions? Join the support server!")
                     .setThumbnail(resource.aw_snap)
-                    .setColor(colors.error);
+                    .setColor('#e66149');
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds :[embed] });
             } else {
                 const smth = stringify(chemicaltools.searchElement(capStuff(toSearch)));
                 var body = parse(smth);
@@ -56,7 +56,7 @@ module.exports = {
                         )
                         .setFooter("Have questions? Join the support server!")
                         .setThumbnail(resource.aw_snap)
-                        .setColor(colors.error);
+                        .setColor('#e66149');
 
                     message.channel.send({ embed });
                 } else {
@@ -71,7 +71,7 @@ module.exports = {
                         .setFooter(`Requested by ${message.author.username}`)
                         .setColor("RANDOM");
 
-                    message.channel.send({ embed });
+                    message.channel.send({ embeds : [embed] });
                 }
             }
         } catch (err) {
@@ -93,11 +93,20 @@ module.exports = {
                 )
                 .setFooter("Have questions? Join the support server!")
                 .setThumbnail(resource.aw_snap)
-                .setColor(colors.error);
+                .setColor('#e66149');
 
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds: [embed] }).then((m) => {
                 m.delete({ timeout: 10000 });
             });
         }
     },
 };
+
+function stringify(arg0) {
+    return JSON.stringify(arg0);
+}
+
+
+function parse(smth) {
+    return JSON.parse(smth);
+}

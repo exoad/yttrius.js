@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const token = require("../../../configs/token.json");
 const resource = require("../../../configs/resource.json");
+const config = require("../../../configs/token.json");
 const superagent = require("superagent");
 module.exports = {
     config: {
@@ -25,7 +26,7 @@ module.exports = {
                     "[Backup Link](" + token.backup_server_invite + ")"
                 );
 
-            message.channel.send({ embed });
+            message.channel.send({ embeds : [embed] });
         } catch (err) {
             const embed = new MessageEmbed()
                 .setTitle(
@@ -36,7 +37,7 @@ module.exports = {
                     "Use `" + config.prefix + "help` for a list of avaliable commands!"
                 )
                 .setFooter("Still facing issues? Join the support server!");
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 5000 });
             });
         }

@@ -64,7 +64,7 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
-      message.channel.send({ embed }).then((m) => {
+      message.channel.send({embeds : [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
       });
     }

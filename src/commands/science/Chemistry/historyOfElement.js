@@ -23,9 +23,9 @@ module.exports = {
                     )
                     .setFooter("Have questions? Join the support server!")
                     .setThumbnail(resource.aw_snap)
-                    .setColor(colors.error);
+                    .setColor('#e66149');
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else {
                 const embed = new MessageEmbed()
                     .setTitle("Element: " + toElement)
@@ -33,7 +33,7 @@ module.exports = {
                     .addField("Country of Origin", elementHistories.country(toElement))
                     .setThumbnail(elementHistories.image(toElement));
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             }
         } catch (err) {
             bot.channels.cache.get(chnl.errors).send(`${err.stack}`);
@@ -45,9 +45,9 @@ module.exports = {
                 .addField("Example", "`" + config.prefix + "elehistory tin`")
                 .setFooter("Have questions? Join the support server!")
                 .setThumbnail(resource.aw_snap)
-                .setColor(colors.error);
+                .setColor('#e66149');
 
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 10000 });
             });
         }

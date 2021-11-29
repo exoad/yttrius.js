@@ -41,7 +41,7 @@ module.exports = {
                     .addField("Example Usage", "```;mphase 2021/03/01```")
                     .setFooter("Still have questions? Join the support server!");
 
-                message.channel.send({ embed });
+                message.channel.send({ embeds :[embed] });
             } else if (userTime == "today" || userTime == "rn" || userTime == "now") {
                 const phase = Moon.getLunarPhase();
                 if (phase == "New") {
@@ -89,7 +89,7 @@ module.exports = {
                     )
                     .setAuthor(message.author.username, message.author.avatarURL)
                     .setImage(thumbna);
-                message.channel.send({ embed });
+                message.channel.send({ embeds : [embed] });
             } else {
                 const date = new Date(userTime);
                 const phase = Moon.getLunarPhase(date);
@@ -138,7 +138,7 @@ module.exports = {
                     )
                     .setAuthor(message.author.username, message.author.avatarURL)
                     .setImage(thumbna);
-                message.channel.send({ embed });
+                message.channel.send({ embeds: [ embed] });
             }
         } catch (err) {
             const embed = new MessageEmbed()
@@ -150,7 +150,7 @@ module.exports = {
                     "Use `" + config.prefix + "help` for a list of avaliable commands!"
                 )
                 .setFooter("Still facing issues? Join the support server!");
-            message.channel.send({ embed }).then((m) => {
+            message.channel.send({ embeds : [embed] }).then((m) => {
                 m.delete({ timeout: 5000 });
             });
         }

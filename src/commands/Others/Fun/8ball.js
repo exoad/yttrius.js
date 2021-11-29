@@ -47,14 +47,14 @@ module.exports = {
         .addField("Command Usage", "```" + config.prefix + "8ball {user_prompt}```")
         .addField("user_prompt", "Your message goes here")
         .addField("Example Usage", "```" + config.prefix + "8ball Am i happy?")
-        .setColor(colors.error);
-        message.channel.send({embed});
+        .setColor('#e66149');
+        message.channel.send({embeds : [embed]});
       } else {
         const embed = new MessageEmbed()
           .setTitle(doRandHT())
           .setColor("RANDOM")
           .setDescription(message.author.username + " asks: " + user_prompt.join(" "));
-        message.channel.send({ embed });
+        message.channel.send({ embeds: [embed] });
       }
     } catch (err) {
       const embed = new MessageEmbed()
@@ -68,7 +68,7 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
-      message.channel.send({ embed }).then((m) => {
+      message.channel.send({ embeds : [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
       });
     }

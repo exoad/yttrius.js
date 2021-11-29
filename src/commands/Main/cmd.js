@@ -29,7 +29,7 @@ module.exports = {
                     config.prefix +
                     "help`` for a list of commands"
                 );
-            message.channel.send(embed);
+            message.channel.send({ embeds: [embed] });
         }
 
         if (command) {
@@ -51,7 +51,7 @@ module.exports = {
                                 `\`${config.prefix}${helpMe[commandName].usage}\``
                             )
                             .addField("Aliases", `\`${helpMe[commandName].alias}\``);
-                        message.channel.send(embed);
+                        message.channel.send({ embeds : [embed] });
                     } catch (err) {
                         const embed = new MessageEmbed()
                             .setTitle(
@@ -64,7 +64,7 @@ module.exports = {
                                 "help` for a list of avaliable commands!"
                             )
                             .setFooter("Still facing issues? Join the support server!");
-                        message.channel.send({ embed }).then((m) => {
+                        message.channel.send({ embeds : [embed] }).then((m) => {
                             m.delete({ timeout: 10000 });
                         });
                     }
