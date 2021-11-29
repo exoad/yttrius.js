@@ -1,0 +1,14 @@
+=============================================================
+TODO:
+- Make sure every single piece of code has been migrated from
+  12 -> 13
+- Make sure no embeds are sending the wrong information
+  a. This means they should not be throwing errors regarding
+     empty messages or empty embeds.
+- Make sure no embeds are not being send in the form of:
+  {embeds : [embed]}
+- Make sure all commands are actually working properly
+  a. Like in the editor, they seem to have some form of errors
+     without being run; so test these commands
+=============================================================
+
