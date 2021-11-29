@@ -44,7 +44,7 @@ module.exports = {
         )
         .addField("Bot Uptime", `:arrow_up_small: ${days}:${hours}:${minutes}:${seconds}`)
         .addField(
-          "See my project in action!",
+          "See the language I am programmed in Action!",
           "[GitHub Repository](https://github.com/exoad/yAPI)"
         );
 

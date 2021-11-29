@@ -15,7 +15,7 @@ app.get("/", (req, res) => res.send("Online."));
 app.listen(port, () => console.log(`On port ${port}`));
 
 const { prefix } = require(`../configs/token.json`);
-[`aliases`, `commands`].forEach((x) => (bot[x] = new Collection()));
+[`aliases`, `commands`].forEach((x) => (bot[x] = new Discord.Collection()));
 ["command", "events"].forEach((x) => require(`./handlers/${x}`)(bot));
 
 // @ts-ignore
