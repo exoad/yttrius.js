@@ -3,6 +3,7 @@ const { Database } = require('secure-db');
 const Discord = require("discord.js");
 const config = require("../../../configs/token.json");
 const moment = require("moment");
+const resource = require("../../../configs/resource.json");
 module.exports = {
   config: {
     name: `register`,
@@ -59,7 +60,7 @@ module.exports = {
         }, 1000);
       });
     } catch (err) {
-      const embed = new MessageEmbed()
+      const embed = new Discord.MessageEmbed()
         .setTitle("Whoops, looks like something went wrong!")
         .setThumbnail(resource.aw_snap)
         .setDescription(

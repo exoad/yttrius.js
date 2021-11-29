@@ -1,8 +1,9 @@
 const fs = require("fs");
 const { promisify } = require("util");
 const readdir = promisify(fs.readdir);
+const { Client, Intents } = require("discord.js");
 const Discord = require("discord.js");
-const bot = new Discord.Client();
+const bot = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const { MessageEmbed } = require("discord.js");
 const config = require("../../../configs/token.json");
 const resource = require("../../../configs/resource.json");
@@ -35,6 +36,7 @@ module.exports = {
             if (command[1] != undefined) {
                 fs.readFile("./configs/commands.json", (err, dataJson) => {
                     if (err) throw err;
+                    // @ts-ignore
                     let helpMe = JSON.parse(dataJson);
                     let commandName = command[1];
 

@@ -2,6 +2,7 @@
 const { Database } = require('secure-db');
 const { MessageEmbed } = require("discord.js");
 const config = require("../../../configs/token.json");
+const resource = require("../../../configs/resource.json");
 module.exports = {
   config: {
     name: `myaccount`,
@@ -22,6 +23,7 @@ module.exports = {
             const embed = new MessageEmbed()
             .setTitle(message.author.username + "'s Public Account")
             .setDescription("See any anomalies? Use `" + config.prefix + "support` to report the issue!")
+            // @ts-ignore
             .addField("")
           }
 

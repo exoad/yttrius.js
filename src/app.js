@@ -1,6 +1,9 @@
 // @ts-ignore
-const { Client, Collection, Discord, MessageEmbed } = require("discord.js");
-const bot = new Client();
+const { Collection, MessageEmbed, Intents } = require("discord.js");
+const Discord = require("discord.js");
+const bot = new Discord.Client({
+    intents: ["GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_EMOJIS_AND_STICKERS", "GUILD_MESSAGE_REACTIONS", "GUILD_INVITES"],
+});
 
 const express = require("express");
 const app = express();
@@ -15,7 +18,8 @@ const { prefix } = require(`../configs/token.json`);
 [`aliases`, `commands`].forEach((x) => (bot[x] = new Collection()));
 ["command", "events"].forEach((x) => require(`./handlers/${x}`)(bot));
 
-bot.on("message", (message) => {
+// @ts-ignore
+bot.on("message", async(message) => {
     if (
         message.content == `<@${bot.user.id}>` ||
         message.content == `<@!${bot.user.id}>`
@@ -25,6 +29,7 @@ bot.on("message", (message) => {
         const embed = new MessageEmbed().setThumbnail(
             "http://www.thecolorapi.com/id?format=svg&hex=FF0000"
         );
+        // @ts-ignore
         message.channel.send({ embed });
     }
     if(message.content == prefix + "hi") {
