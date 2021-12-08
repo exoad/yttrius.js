@@ -24,13 +24,13 @@ module.exports = {
             .setTitle(message.author.username + "'s Public Account Details")
             .setDescription("See any anomalies? Use `" + config.prefix + "support` to report the issue!")
             // @ts-ignore
-            .addField("Registry Status", db.get(`${message.author.id}.reg`))
-            .addField("Account Trust Level", db.get(`${message.author.id}.trust`))
-            .addField("Account Tags", db.get(`\`${message.author.id}.tags\``))
-            .addField("Wallet Balance", db.get(`${message.author.id}.wallet`))
-            .addField("Coins", db.get(`${message.author.id}.coins`))
-            .addField("Reputation", db.get(`${message.author.id}.reps`))
-            .addField("Registration Date", db.get(`${message.author.id}.time_teg`))
+            .addField("Registry Status", JSON.stringify(db.get(`${message.author.id}.reg`)))
+            .addField("Account Trust Level", JSON.stringify(db.get(`${message.author.id}.trust`)))
+            .addField("Account Tags", JSON.stringify(db.get(`\`${message.author.id}.tags\``)))
+            .addField("Wallet Balance", JSON.stringify(db.get(`${message.author.id}.wallet`)))
+            .addField("Coins", JSON.stringify(db.get(`${message.author.id}.coins`)))
+            .addField("Reputation", JSON.stringify(db.get(`${message.author.id}.reps`)))
+            .addField("Registration Date", JSON.stringify(db.get(`${message.author.id}.time_teg`)))
             .setColor("RANDOM");
             message.channel.send({embeds: [embed]});
           }
