@@ -46,6 +46,10 @@ module.exports = {
         .addField(
           "See the language I am programmed in Action!",
           "[GitHub Repository](https://github.com/exoad/yAPI)"
+        )
+        .addField(
+          "Servers Count",
+          "76"
         );
 
       message.channel.send({ embeds: [embed] });
