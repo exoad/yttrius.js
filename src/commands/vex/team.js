@@ -171,6 +171,10 @@ module.exports = {
         // fetch skills
         const team_id = response2.body.data[0].id;
         fetchSkills(team_id);
+      } else if(option === "awards") {
+        // fetch awards
+        const team_id = response2.body.data[0].id;
+        fetchAwards(team_id);
       }
     } catch (err) {
       const embed = new MessageEmbed()
