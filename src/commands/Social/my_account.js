@@ -26,7 +26,7 @@ module.exports = {
             // @ts-ignore
             .addField("Registry Status", JSON.stringify(db.get(`${message.author.id}.reg`)), true)
             .addField("Account Trust Level", JSON.stringify(db.get(`${message.author.id}.trust`)), true)
-            .addField("Account Tags", db.get(`${message.author.id}.tags`), true)
+            .addField("Account Badge(s)", db.get(`${message.author.id}.tags`), true)
             .addField("Wallet Balance", JSON.stringify(db.get(`${message.author.id}.wallet`)), true)
             .addField("Coins", JSON.stringify(db.get(`${message.author.id}.coins`)), true)
             .addField("Reputation", JSON.stringify(db.get(`${message.author.id}.reps`)), true)
