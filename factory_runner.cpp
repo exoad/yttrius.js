@@ -4,6 +4,10 @@
 using namespace std;
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
+void startInit(int32_t type_var) {
+  
+} 
+
 signed main() {
   std::pmr::monotonic_buffer_resource mbr{};
   std::pmr::polymorphic_allocator<char> alloc{&mbr};

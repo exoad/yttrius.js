@@ -19,7 +19,7 @@ module.exports = {
           const doc = new Discord.MessageAttachment(
             "lib/archives/account_readmes/README.txt"
           );
-          message.channel.send(doc);
+          message.channel.send("Retrieved", doc);
         }, 1000);
       });
     } catch (err) {
