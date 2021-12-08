@@ -21,7 +21,7 @@ module.exports = {
           .setColor(colors.error)
           .setTitle("Hmmm you need to register first!")
           .setDescription("Because this bot uses a lot of data, it is necessary to keep a good record of our users and this means some commands will need you to be registered. Fear not, registration is completely free! Do so by using the command `"+config.prefix+"register`!");
-        return message.channel.send(embed);
+        return message.channel.send({ embeds : [embed] });
       }
       async function error() {
         const embed2 = new MessageEmbed()
