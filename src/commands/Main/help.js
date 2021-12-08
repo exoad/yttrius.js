@@ -84,6 +84,10 @@ module.exports = {
             ":dividers: Social Commands",
             `Use \`${config.prefix}help social\` to access all Account related commands`
           )
+          .addField(
+            ":mag: Robot Events",
+            `Use \`${config.prefix}help robots\` to access all commands related to robot events (vex)`
+          )
           .setThumbnail(resource.science)
           .setFooter('The prefix is "' + config.prefix + '"!');
 
@@ -136,6 +140,8 @@ module.exports = {
           makeCommandList("Other", "fun", true);
         else if (cat == "social")
           makeCommandList("Social", "myaccount, userdocs, register", false);
+        else if (cat == "events" || cat == "event")
+          makeCommandList("Robots", "team_search", false);
       }
     } catch (err) {
       console.info(err);
