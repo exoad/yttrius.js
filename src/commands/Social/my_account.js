@@ -32,7 +32,7 @@ module.exports = {
             .addField("Reputation", db.get(`${message.author.id}.reps`))
             .addField("Registration Date", db.get(`${message.author.id}.time_teg`))
             .setColor("RANDOM");
-            message.channel.send({emebds: [embed]});
+            message.channel.send({embeds: [embed]});
           }
         }, 1500);
       })
