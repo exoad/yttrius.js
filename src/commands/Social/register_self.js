@@ -23,7 +23,7 @@ module.exports = {
               db.set(author, {
                 reg: 3,
                 trust: 10,
-                tags: "owner",
+                tags: `${resource.badge_owner}`,
                 wallet: "INF_NULL",
                 coins: "INF_NULL",
                 reps: 0,
@@ -38,7 +38,7 @@ module.exports = {
               db.set(author, {
                 reg: 1,
                 trust: 1,
-                tags: "normal_user",
+                tags: `${resource.badge_regular}`,
                 wallet: "INF_NULL",
                 coins: "INF_NULL",
                 reps: 0,
