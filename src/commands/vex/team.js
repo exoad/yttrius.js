@@ -1,4 +1,5 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
+const { Database } = require("secure-db");
 const fetch = require("superagent");
 const resource = require("../../../configs/resource.json");
 const config = require("../../../configs/token.json");
@@ -12,6 +13,16 @@ module.exports = {
   },
   run: async (bot, message, args) => {
     try {
+      const db = new Database("account");
+      const user = await db.get(`${message.author.id}.team`);
+      if (!user) {
+        const embed = new MessageEmbed()
+          // @ts-ignore
+          .setColor(colors.error)
+          .setTitle("Hmmm you need to register first!")
+          .setDescription("Because this bot uses a lot of data, it is necessary to keep a good record of our users and this means some commands will need you to be registered. Fear not, registration is completely free! Do so by using the command `"+config.prefix+"register`!");
+        return message.channel.send(embed);
+      }
       async function error() {
         const embed2 = new MessageEmbed()
           // @ts-ignore
