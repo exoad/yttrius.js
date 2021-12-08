@@ -22,9 +22,9 @@ module.exports = {
       let minutes = Math.floor(totalSeconds / 60);
       let seconds = Math.floor(totalSeconds % 60);
       const embed = new MessageEmbed()
-        .setTitle("Science Bot")
+        .setTitle("Yttrius")
         .setDescription(
-          "Science Bot is a discord bot created by `" +
+          "Yttrius is a discord bot created by `" +
             chnl.owner_name +
             "`. It is a bot that incorporates science as its main focus."
         )

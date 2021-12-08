@@ -87,7 +87,7 @@ module.exports = {
           .setThumbnail(resource.science)
           .setFooter('The prefix is "' + config.prefix + '"!');
 
-        message.channel.send({ emebds: [embed] });
+        message.channel.send({ embeds: [embed] });
       } else {
         if (
           (cat == "science" || cat == "sci") &&
