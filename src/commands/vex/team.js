@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageAttachment } = require("discord.js");
 const fetch = require("superagent");
 const resource = require("../../../configs/resource.json");
 const config = require("../../../configs/token.json");
@@ -12,6 +12,53 @@ module.exports = {
   },
   run: async (bot, message, args) => {
     try {
+      async function error() {
+        const embed2 = new MessageEmbed()
+          // @ts-ignore
+          .setColor(colors.error)
+          .setTitle("Team Not Found")
+          .setDescription(
+            `The team you searched for was not found. Please try again.`
+          );
+
+        message.channel.send({ embeds: [embed2] });
+      }
+      async function fetchSkills(team_id) {
+        // fetch each individual skill competition and append it to a txt file
+        const response6 = await fetch
+          .get(`https://www.robotevents.com/api/v2/teams/${team_id}/skills`)
+          .set("Authorization", `Bearer ${config.robot_token}`);
+        const skills = response6.body.data;
+        let skill_list = "";
+        for (let i = 0; i < skills.length; i++) {
+          skill_list += `Event: ${skills[i].event.name} \n`;
+          skill_list += "Rank: " + skills[i].rank + "\n";
+          skill_list += "Score: " + skills[i].score + "\n";
+          skill_list += "Attempts: " + skills[i].attempts + "\n";
+          skill_list += "--------------------\n";
+        }
+        // write skill_list to a txt file into the default cache folder and then fetch it and send it as a messageattachment
+        const fs = require("fs");
+        // unix timestamp
+        const time = Date.now();
+        fs.writeFile(
+          `${__dirname}/../../../cache/${time}_skills.txt`,
+          skill_list,
+          function (err) {
+            if (err) {
+              return console.log(err);
+            }
+          }
+        );
+        // attach to a message as a file not attachment
+        const attachment = new MessageAttachment(
+          `${__dirname}/../../../cache/${time}_skills.txt`
+        );
+        message.channel.send({files : [attachment]});
+
+        // send a message of "hello" with the attachment
+        //message.channel.send("Hello", attachment);
+      }
       let team = args[0];
       let option = args[1];
       if (!team || team == undefined) {
@@ -37,24 +84,16 @@ module.exports = {
           );
         return message.channel.send({ embeds: [embed] });
       }
+      const response2 = await fetch
+        .get(
+          `https://www.robotevents.com/api/v2/teams?number%5B%5D=${team}&program%5B%5D=1&myTeams=false`
+        )
+        .set("Authorization", `Bearer ${config.robot_token}`)
+        .set("accept", "application/json");
+      if (response2.status !== 200) {
+        error();
+      }
       if (!option || option == undefined) {
-        const response2 = await fetch
-          .get(
-            `https://www.robotevents.com/api/v2/teams?number%5B%5D=${team}&program%5B%5D=1&myTeams=false`
-          )
-          .set("Authorization", `Bearer ${config.robot_token}`)
-          .set("accept", "application/json");
-        if (response2.status !== 200) {
-          const embed2 = new MessageEmbed()
-            // @ts-ignore
-            .setColor(colors.error)
-            .setTitle("Team Not Found")
-            .setDescription(
-              `The team you searched for was not found. Please try again.`
-            );
-
-          return message.channel.send({ embeds: [embed2] });
-        }
         const embed = new MessageEmbed()
           // @ts-ignore
           .setColor(colors.success)
@@ -62,20 +101,27 @@ module.exports = {
           .setDescription(
             "Here are the results I found for this team.\n*Notice any anomalies? Contact my develop!*"
           )
-          .addField("Team ID", response2.body.data[0].id, true)
-          .addField("Team Name", response2.body.data[0].team_name, true)
-          .addField("Robot Name", response2.body.data[0].robot_name, true)
-          .addField("Organization", response2.body.data[0].organization, true)
+
+          .addField("Team ID", `${response2.body.data[0].id}`, true)
+          .addField("Team Name", `${response2.body.data[0].team_name}`, true)
+          .addField("Robot Name", `${response2.body.data[0].robot_name}`, true)
+          .addField(
+            "Organization",
+            `${response2.body.data[0].organization}`,
+            true
+          )
           .addField(
             "Location",
-            `${response2.body.data[0].location.city}, ${response2.body.data[0].location.state}, ${response2.body.data[0].location.country}`,
+            `${response2.body.data[0].location.city}, ${response2.body.data[0].location.region}, ${response2.body.data[0].location.country}`,
             true
           )
           .addField("Program", response2.body.data[0].program.name, true)
           .setFooter("Check the command for more options!");
         message.channel.send({ embeds: [embed] });
-      } else if (option == "skills") {
-        message.channel.send("To be implemented");
+      } else if (option === "skills") {
+        // fetch skills
+        const team_id = response2.body.data[0].id;
+        fetchSkills(team_id);
       }
     } catch (err) {
       const embed = new MessageEmbed()
