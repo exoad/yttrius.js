@@ -21,12 +21,19 @@ module.exports = {
           } else {
             m.edit("Your Account information below:");
             const embed = new MessageEmbed()
-            .setTitle(message.author.username + "'s Public Account")
+            .setTitle(message.author.username + "'s Public Account Details")
             .setDescription("See any anomalies? Use `" + config.prefix + "support` to report the issue!")
             // @ts-ignore
-            .addField("")
+            .addField("Registry Status", db.get(`${message.author.id}.reg`))
+            .addField("Account Trust Level", db.get(`${message.author.id}.trust`))
+            .addField("Account Tags", db.get(`\`${message.author.id}.tags\``))
+            .addField("Wallet Balance", db.get(`${message.author.id}.wallet`))
+            .addField("Coins", db.get(`${message.author.id}.coins`))
+            .addField("Reputation", db.get(`${message.author.id}.reps`))
+            .addField("Registration Date", db.get(`${message.author.id}.time_teg`))
+            .setColor("RANDOM");
+            message.channel.send({emebds: [embed]});
           }
-
         }, 1500);
       })
     } catch (err) {
