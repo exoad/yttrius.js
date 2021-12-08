@@ -20,8 +20,12 @@ module.exports = {
           // @ts-ignore
           .setColor(colors.error)
           .setTitle("Hmmm you need to register first!")
-          .setDescription("Because this bot uses a lot of data, it is necessary to keep a good record of our users and this means some commands will need you to be registered. Fear not, registration is completely free! Do so by using the command `"+config.prefix+"register`!");
-        return message.channel.send({ embeds : [embed] });
+          .setDescription(
+            "Because this bot uses a lot of data, it is necessary to keep a good record of our users and this means some commands will need you to be registered. Fear not, registration is completely free! Do so by using the command `" +
+              config.prefix +
+              "register`!"
+          );
+        return message.channel.send({ embeds: [embed] });
       }
       async function error() {
         const embed2 = new MessageEmbed()
@@ -34,6 +38,36 @@ module.exports = {
 
         message.channel.send({ embeds: [embed2] });
       }
+      async function fetchAwards(team_id) {
+        const response6 = await fetch
+          .get(`https://www.robotevents.com/api/v2/teams/${team_id}/awards`)
+          .set("Authorization", `Bearer ${config.robot_token}`);
+        const awards = response6.body.data;
+        let awards_list = "";
+        for (let i = 0; i < awards.length; i++) {
+          awards_list += `Event: ${awards[i].event.name} \n`;
+          awards_list += `Award: ${awards[i].title} \n`;
+          awards_list += `Qualifications: ${(awards[i].qualifications ? "none" : awards[i].qualifications)} \n`;
+          awards_list += "--------------------\n";
+        }
+        const fs = require("fs");
+        const time = Date.now();
+        fs.writeFile(
+          `${__dirname}/../../../cache/${time}_awards.txt`,
+          awards_list,
+          function (err) {
+            if (err) {
+              return console.log(err);
+            }
+          }
+        );
+        // attach to a message as a file not attachment
+        const attachment = new MessageAttachment(
+          `${__dirname}/../../../cache/${time}_awards.txt`
+        );
+        message.channel.send({ files: [attachment] });
+      }
+
       async function fetchSkills(team_id) {
         // fetch each individual skill competition and append it to a txt file
         const response6 = await fetch
@@ -65,7 +99,7 @@ module.exports = {
         const attachment = new MessageAttachment(
           `${__dirname}/../../../cache/${time}_skills.txt`
         );
-        message.channel.send({files : [attachment]});
+        message.channel.send({ files: [attachment] });
 
         // send a message of "hello" with the attachment
         //message.channel.send("Hello", attachment);
@@ -115,7 +149,11 @@ module.exports = {
 
           .addField("Team ID", `${response2.body.data[0].id}`, true)
           .addField("Team Name", `${response2.body.data[0].team_name}`, true)
-          .addField("Robot Name", `[ ${response2.body.data[0].robot_name} ]`, true)
+          .addField(
+            "Robot Name",
+            `[ ${response2.body.data[0].robot_name} ]`,
+            true
+          )
           .addField(
             "Organization",
             `${response2.body.data[0].organization}`,
