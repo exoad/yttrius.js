@@ -115,7 +115,7 @@ module.exports = {
 
           .addField("Team ID", `${response2.body.data[0].id}`, true)
           .addField("Team Name", `${response2.body.data[0].team_name}`, true)
-          .addField("Robot Name", `${response2.body.data[0].robot_name}`, true)
+          .addField("Robot Name", `[ ${response2.body.data[0].robot_name} ]`, true)
           .addField(
             "Organization",
             `${response2.body.data[0].organization}`,
@@ -147,9 +147,8 @@ module.exports = {
         )
         .setFooter("Still facing issues? Join the support server!");
       // send this embed then delete it after 4 seconds
-      message.channel.send({ embeds: [embed] }).then((msg) => {
-        msg.delete({ timeout: 4000 });
-      });
+      message.channel.send({ embeds: [embed] });
+      console.log(err);
     }
   },
 };
