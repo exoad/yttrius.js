@@ -15,9 +15,9 @@ module.exports = {
   run: async (bot, message, args) => {
     try {
       const embed = new MessageEmbed()
-        .setTitle("Invite Sci-Bot to your servers")
+        .setTitle("Invite Yttrius to your servers")
         .setDescription(
-          "Wanna invite `Sci-Bot` to your own server(s)? Check the links below!"
+          "Wanna invite `Yttrius` to your own server(s)? Check the links below!"
         )
         .addField("Invite Link #1 (Admin)", "[Admin](" + token.perm1 + ")")
         .addField(

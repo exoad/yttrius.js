@@ -119,16 +119,16 @@
         "alias": "elehistory"
     },
     "invite": {
-        "name": "Invite Sci-Bot",
+        "name": "Invite Yttrius",
         "group": "General",
-        "description": "Invite Sci-Bot to your own servers!",
+        "description": "Invite Yttrius to your own servers!",
         "usage": "invite",
         "alias": "invitebot"
     },
     "invitebot": {
-        "name": "Invite Sci-Bot",
+        "name": "Invite Yttrius",
         "group": "General",
-        "description": "Invite Sci-Bot to your own servers!",
+        "description": "Invite Yttrius to your own servers!",
         "usage": "invite",
         "alias": "invite"
     },
