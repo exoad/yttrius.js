@@ -1,7 +1,7 @@
-const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js');
-const resource = require('../../../configs/resource.json');
-const config = require('../../../configs/token.json');
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const resource = require("../../../configs/resource.json");
+const config = require("../../../configs/token.json");
 module.exports = {
   config: {
     name: `userdocs`,
@@ -16,10 +16,11 @@ module.exports = {
           m.edit(
             "**Fetched the documentations for:** `Accounts & Trust System`"
           );
-          const doc = new Discord.MessageAttachment(
-            "lib/archives/account_readmes/README.txt"
+          // fetch the file and send it as an attachment
+          const attachment = new Discord.MessageAttachment(
+            `${__dirname}/../../../lib/archives/account_readmes/README.txt`
           );
-          message.channel.send("Retrieved", doc);
+          message.channel.send({ files: [attachment] });
         }, 1000);
       });
     } catch (err) {
@@ -34,7 +35,7 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
-      message.channel.send({ embeds : [embed] }).then((m) => {
+      message.channel.send({ embeds: [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
       });
     }
