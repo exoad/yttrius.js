@@ -15,7 +15,7 @@ module.exports = {
     try {
       const db = new Database("account");
       const user = await db.get(`${message.author.id}.team`);
-      if (!user) {
+      if (user === null || user == undefined) {
         const embed = new MessageEmbed()
           // @ts-ignore
           .setColor(colors.error)

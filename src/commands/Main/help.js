@@ -86,7 +86,7 @@ module.exports = {
           )
           .addField(
             ":mag: Robot Events",
-            `Use \`${config.prefix}help robots\` to access all commands related to robot events (vex)`
+            `Use \`${config.prefix}help events\` to access all commands related to robot events (vex)`
           )
           .setThumbnail(resource.science)
           .setFooter('The prefix is "' + config.prefix + '"!');
