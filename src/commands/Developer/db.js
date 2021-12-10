@@ -25,9 +25,6 @@ module.exports = {
         "../../../web/dblastreset.txt",
         `${new Date().toLocaleString()}`
       );
-
-
-
     } catch (err) {
       console.error(err);
       const embed = new MessageEmbed()
@@ -43,7 +40,7 @@ module.exports = {
         .setFooter("Still facing issues? Join the support server!");
 
       const fs = require("fs");
-      const log = fs.createWriteStream("../../../logs/" + Date.now() + "_error.log", {
+      const log = fs.createWriteStream("" + Date.now() + "_error.log", {
         flags: "a",
       });
       log.write(

@@ -15,12 +15,9 @@ module.exports = {
   // @ts-ignore
   run: async (bot, message, args) => {
     try {
-      if(message.author.id != config.owner_id) 
-        return;
+      if (message.author.id != config.owner_id) return;
       const db = require("secure-db");
       const registered = new Database("account");
-      
-      
     } catch (err) {
       console.error(err);
       const embed = new MessageEmbed()
@@ -36,20 +33,16 @@ module.exports = {
         .setFooter("Still facing issues? Join the support server!");
 
       const fs = require("fs");
-      const log = fs.createWriteStream("../../../logs/" + Date.now() + "_error.log", {
-        flags: "a",
-      });
-      log.write(
-        // @ts-ignore
-        `${moment().format("YYYY-MM-DD HH:mm:ss")} - ${err.message} - ${
-          message.author.tag
-        } - ${message.author.id} - ${message.guild.name} - ${
-          message.guild.id
-        } - ${message.channel.name} - ${message.channel.id} - ${
-          message.content
-        }\n`
+
+      fs.writeFile(
+        `${__dirname}/../../../logs/${Date.now()}_error.log`,
+        err,
+        function (err) {
+          if (err) {
+            return console.log(err);
+          }
+        }
       );
-      log.end();
 
       message.channel.send({ embeds: [embed] }).then((m) => {
         m.delete({ timeout: 5000 });

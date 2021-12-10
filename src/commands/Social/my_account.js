@@ -33,7 +33,6 @@ module.exports = {
               m.edit(
                 "**Failed to retrieve your account**\nReason: You are not registered\nLast Reset: " +
                   (dblastreset == null ? "Never" : dblastreset)
-
               );
             } else {
               m.edit("Your Account information below:");
@@ -100,19 +99,16 @@ module.exports = {
         .setFooter("Still facing issues? Join the support server!");
 
       const fs = require("fs");
-      const log = fs.createWriteStream("../../../logs/" + Date.now() + "_error.log", {
-        flags: "a",
-      });
-      log.write(
-        `${moment().format("YYYY-MM-DD HH:mm:ss")} - ${err.message} - ${
-          message.author.tag
-        } - ${message.author.id} - ${message.guild.name} - ${
-          message.guild.id
-        } - ${message.channel.name} - ${message.channel.id} - ${
-          message.content
-        }\n`
+
+      fs.writeFile(
+        `${__dirname}/../../../logs/${Date.now()}_error.log`,
+        err,
+        function (err) {
+          if (err) {
+            return console.log(err);
+          }
+        }
       );
-      log.end();
 
       message.channel.send({ embeds: [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
