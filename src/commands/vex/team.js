@@ -4,6 +4,7 @@ const fetch = require("superagent");
 const resource = require("../../../configs/resource.json");
 const config = require("../../../configs/token.json");
 const colors = require("../../../configs/colors.json");
+const fs = require("fs");
 module.exports = {
   config: {
     name: `team_search`,
@@ -47,10 +48,11 @@ module.exports = {
         for (let i = 0; i < awards.length; i++) {
           awards_list += `Event: ${awards[i].event.name} \n`;
           awards_list += `Award: ${awards[i].title} \n`;
-          awards_list += `Qualifications: ${(awards[i].qualifications ? "none" : awards[i].qualifications)} \n`;
+          awards_list += `Qualifications: ${
+            awards[i].qualifications ? "none" : awards[i].qualifications
+          } \n`;
           awards_list += "--------------------\n";
         }
-        const fs = require("fs");
         const time = Date.now();
         fs.writeFile(
           `${__dirname}/../../../cache/${time}_awards.txt`,
@@ -85,7 +87,7 @@ module.exports = {
           skill_list += "--------------------\n";
         }
         // write skill_list to a txt file into the default cache folder and then fetch it and send it as a messageattachment
-        const fs = require("fs");
+
         // unix timestamp
         const time = Date.now();
         fs.writeFile(
@@ -105,6 +107,45 @@ module.exports = {
 
         // send a message of "hello" with the attachment
         //message.channel.send("Hello", attachment);
+      }
+
+      async function fetchEvents(team_id) {
+        const response6 = await fetch
+          .get(`https://www.robotevents.com/api/v2/teams/${team_id}/skills`)
+          .set("Authorization", `Bearer ${config.robot_token}`);
+        let events = response6.body.data;
+        let events_list = "",
+          x = 0,
+          others = `Team Attended: ${x} events`;
+        for (var i = 0; i < events.length; i++) {
+          x++;
+          events += "==Event: " + events[i].name + "==\n";
+          events += "--Season: " + events[i].season.name + "--\n";
+          events +=
+            "Location: " +
+            events[i].location.venue +
+            " @ " +
+            events[i].location.address_1 +
+            " " +
+            events[i].location.country +
+            "\n";
+          events += "Start: " + events[i].start.substring(0, 10) + "\n";
+        }
+        const time = Date.now();
+        fs.writeFile(
+          `${__dirname}/../../../cache/${time}_skills.txt`,
+          others + events_list,
+          function (err) {
+            if (err) {
+              return console.log(err);
+            }
+          }
+        );
+        // attach to a message as a file not attachment
+        const attachment = new MessageAttachment(
+          `${__dirname}/../../../cache/${time}_skills.txt`
+        );
+        message.channel.send({ files: [attachment] });
       }
       let team = args[0];
       let option = args[1];
@@ -173,10 +214,13 @@ module.exports = {
         // fetch skills
         const team_id = response2.body.data[0].id;
         fetchSkills(team_id);
-      } else if(option === "awards") {
+      } else if (option === "awards") {
         // fetch awards
         const team_id = response2.body.data[0].id;
         fetchAwards(team_id);
+      } else if(option === "events"){
+        const team_id = response2.body.data[0].id;
+        fetchEvents(team_id);
       }
     } catch (err) {
       const embed = new MessageEmbed()
