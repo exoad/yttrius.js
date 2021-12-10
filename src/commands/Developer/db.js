@@ -22,9 +22,14 @@ module.exports = {
       const registered = new Database("account");
       registered.reset();
       // write to /web/dblastreset.txt
-      fs.writeFileSync(
-        "../../../web/dblastreset.txt",
-        `${new Date().toLocaleString()}`
+      fs.writeFile(
+        `${__dirname}/../../../web/dblastreset.txt`,
+        `${moment().format("MMMM Do YYYY, h:mm:ss a")}`,
+        function (err2) {
+          if (err2) {
+            return console.log(err2);
+          }
+        }
       );
     } catch (err) {
       console.error(err);
