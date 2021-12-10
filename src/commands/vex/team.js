@@ -120,7 +120,7 @@ module.exports = {
         for (var i = 0; i < events.length; i++) {
           x++;
           events += "==Event: " + events[i].name + "==\n";
-          events += "--Season: " + events[i].season.name + "--\n";
+          events += "--Season: " + response6.body.data[i].season.name + "--\n";
           events +=
             "Location: " +
             events[i].location.venue +
