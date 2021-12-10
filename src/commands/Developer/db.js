@@ -22,7 +22,7 @@ module.exports = {
       registered.reset();
       // write to /web/dblastreset.txt
       fs.writeFileSync(
-        "./web/dblastreset.txt",
+        "../../../web/dblastreset.txt",
         `${new Date().toLocaleString()}`
       );
 
@@ -43,7 +43,7 @@ module.exports = {
         .setFooter("Still facing issues? Join the support server!");
 
       const fs = require("fs");
-      const log = fs.createWriteStream("./logs/" + Date.now() + "_error.log", {
+      const log = fs.createWriteStream("../../../logs/" + Date.now() + "_error.log", {
         flags: "a",
       });
       log.write(

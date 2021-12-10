@@ -62,7 +62,7 @@ module.exports = {
         .setFooter("Still facing issues? Join the support server!");
 
       const fs = require("fs");
-      const log = fs.createWriteStream("./logs/" + Date.now() + "_error.log", {
+      const log = fs.createWriteStream("../../../logs/" + Date.now() + "_error.log", {
         flags: "a",
       });
       log.write(
