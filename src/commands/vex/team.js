@@ -77,6 +77,7 @@ module.exports = {
         let skill_list = "";
         for (let i = 0; i < skills.length; i++) {
           skill_list += `Event: ${skills[i].event.name} \n`;
+          skill_list += `Type: ${skills[i].type} \n`;
           skill_list += "Rank: " + skills[i].rank + "\n";
           skill_list += "Score: " + skills[i].score + "\n";
           skill_list += "Attempts: " + skills[i].attempts + "\n";
