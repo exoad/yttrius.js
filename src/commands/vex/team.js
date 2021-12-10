@@ -111,7 +111,7 @@ module.exports = {
 
       async function fetchEvents(team_id) {
         const response6 = await fetch
-          .get(`https://www.robotevents.com/api/v2/teams/${team_id}/skills`)
+          .get(`https://www.robotevents.com/api/v2/teams/${team_id}/events`)
           .set("Authorization", `Bearer ${config.robot_token}`);
         let events = response6.body.data;
         let events_list = "",
@@ -119,9 +119,9 @@ module.exports = {
           others = `Team Attended: ${x} events`;
         for (var i = 0; i < events.length; i++) {
           x++;
-          events += "==Event: " + events[i].name + "==\n";
-          events += "--Season: " + response6.body.data[i].season.name + "--\n";
-          events +=
+          events_list += "==Event: " + events[i].name + "==\n";
+          events_list += "--Season: " + events[i].season.name + "--\n";
+          events_list +=
             "Location: " +
             events[i].location.venue +
             " @ " +
@@ -129,11 +129,11 @@ module.exports = {
             " " +
             events[i].location.country +
             "\n";
-          events += "Start: " + events[i].start.substring(0, 10) + "\n";
+          events_list += "Start: " + events[i].start.substring(0, 10) + "\n";
         }
         const time = Date.now();
         fs.writeFile(
-          `${__dirname}/../../../cache/${time}_skills.txt`,
+          `${__dirname}/../../../cache/${time}_events_teams.txt`,
           others + events_list,
           function (err) {
             if (err) {
@@ -143,7 +143,7 @@ module.exports = {
         );
         // attach to a message as a file not attachment
         const attachment = new MessageAttachment(
-          `${__dirname}/../../../cache/${time}_skills.txt`
+          `${__dirname}/../../../cache/${time}_events_teams.txt`
         );
         message.channel.send({ files: [attachment] });
       }
