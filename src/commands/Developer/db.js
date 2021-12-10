@@ -7,7 +7,7 @@ const resource = require("../../../configs/resource.json");
 const { Database } = require("secure-db");
 module.exports = {
   config: {
-    name: `registered`,
+    name: `db_reset`,
     category: "",
     description: "",
     aliases: [``],
