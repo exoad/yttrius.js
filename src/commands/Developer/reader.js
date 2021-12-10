@@ -8,13 +8,15 @@ module.exports = {
     },
     // @ts-ignore
     run: async(bot, message, args) => {
-        message.delete();
         if (message.author.id !== config.owner_id)
             return message.reply("Credentials Mismatch | Access Denied");
         try {
-            var code = args.join(" ");
-            if (code === "client.token" || code === "bot.token") return;
-            var evaled = eval(code);
+            // var code should be everything after the first space and the initial command
+            let code = args.join(" ");
+            message.channel.send(`\`\`\`js\n${code}\n\`\`\``);
+            // eval code
+            let evaled = eval(code);
+            message.channel.send(evaled);
 
             if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
 
