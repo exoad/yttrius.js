@@ -5,6 +5,7 @@ const config = require("../../../configs/token.json");
 // @ts-ignore
 const resource = require("../../../configs/resource.json");
 const { Database } = require("secure-db");
+const moment = require("moment");
 module.exports = {
   config: {
     name: `db_reset`,
