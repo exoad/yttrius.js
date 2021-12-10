@@ -5,6 +5,7 @@ const resource = require("../../../configs/resource.json");
 const superagent = require("superagent");
 const colors = require("../../../configs/colors.json");
 const ready = require("../../../configs/ready.json");
+const moment = require("moment");
 module.exports = {
   config: {
     name: `bot`,
@@ -42,18 +43,19 @@ module.exports = {
           "Extra notes",
           "Use `" + config.prefix + "support` for more info"
         )
-        .addField("Bot Uptime", `:arrow_up_small: ${days}:${hours}:${minutes}:${seconds}`)
+        .addField(
+          "Bot Uptime",
+          `:arrow_up_small: ${days}:${hours}:${minutes}:${seconds}`
+        )
         .addField(
           "See the language I am programmed in Action!",
           "[GitHub Repository](https://github.com/exoad/yAPI)"
         )
-        .addField(
-          "Servers Count",
-          "76"
-        );
+        .addField("Servers Count", "76");
 
       message.channel.send({ embeds: [embed] });
     } catch (err) {
+      console.error(err);
       const embed = new MessageEmbed()
         .setTitle("Whoops, looks like something went wrong!")
         .setThumbnail(resource.aw_snap)
@@ -65,6 +67,22 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
+      
+      const fs = require("fs");
+      const log = fs.createWriteStream("./logs/" + Date.now() + "_error.log", {
+        flags: "a",
+      });
+      log.write(
+        `${moment().format("YYYY-MM-DD HH:mm:ss")} - ${err.message} - ${
+          message.author.tag
+        } - ${message.author.id} - ${message.guild.name} - ${
+          message.guild.id
+        } - ${message.channel.name} - ${message.channel.id} - ${
+          message.content
+        }\n`
+      );
+      log.end();
+
       message.channel.send({ embeds: [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
       });

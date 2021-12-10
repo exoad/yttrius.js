@@ -4,6 +4,7 @@ const fetch = require("superagent");
 const resource = require("../../../configs/resource.json");
 const config = require("../../../configs/token.json");
 const colors = require("../../../configs/colors.json");
+const moment = require("moment");
 const fs = require("fs");
 module.exports = {
   config: {
@@ -119,8 +120,7 @@ module.exports = {
           y = 0,
           others = ``;
         for (var i = 0; i < events.length; i++) {
-          if (!events[i].name.includes("Cancel")) 
-            x++;
+          if (!events[i].name.includes("Cancel")) x++;
           y++;
           events_list += "==Event: " + events[i].name + "==\n";
           events_list += "--Season: " + events[i].season.name + "--\n";
@@ -134,7 +134,6 @@ module.exports = {
             "\n";
           events_list += "Start: " + events[i].start.substring(0, 10) + "\n";
           events_list += "--------------------\n";
-
         }
         const time = Date.now();
         others = "Total Attended Events: " + x + "\nTotal Events: " + y;
@@ -224,11 +223,12 @@ module.exports = {
         // fetch awards
         const team_id = response2.body.data[0].id;
         fetchAwards(team_id);
-      } else if(option === "events"){
+      } else if (option === "events") {
         const team_id = response2.body.data[0].id;
         fetchEvents(team_id);
       }
     } catch (err) {
+      console.error(err);
       const embed = new MessageEmbed()
         .setTitle("Whoops, looks like something went wrong!")
         .setThumbnail(resource.aw_snap)
@@ -240,9 +240,25 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
-      // send this embed then delete it after 4 seconds
-      message.channel.send({ embeds: [embed] });
-      console.log(err);
+
+      const fs = require("fs");
+      const log = fs.createWriteStream("./logs/" + Date.now() + "_error.log", {
+        flags: "a",
+      });
+      log.write(
+        `${moment().format("YYYY-MM-DD HH:mm:ss")} - ${err.message} - ${
+          message.author.tag
+        } - ${message.author.id} - ${message.guild.name} - ${
+          message.guild.id
+        } - ${message.channel.name} - ${message.channel.id} - ${
+          message.content
+        }\n`
+      );
+      log.end();
+
+      message.channel.send({ embeds: [embed] }).then((m) => {
+        m.delete({ timeout: 5000 });
+      });
     }
   },
 };

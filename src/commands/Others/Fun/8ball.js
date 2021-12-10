@@ -1,8 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 const profanity = require("@2toad/profanity").profanity;
-const resource = require('../../../../configs/resource.json');
-const config = require('../../../../configs/token.json');
-const colors = require('../../../../configs/colors.json');
+const resource = require("../../../../configs/resource.json");
+const config = require("../../../../configs/token.json");
+const colors = require("../../../../configs/colors.json");
+const moment = require("moment");
 module.exports = {
   config: {
     name: `8ball`,
@@ -40,23 +41,36 @@ module.exports = {
       let user_prompt = message.content.split(" ").slice(1);
       if (profanity.exists(user_prompt))
         message.channel.send("**Blacklisted Words**\n*Please try again*");
-      else if(!user_prompt || user_prompt == undefined || user_prompt == null) {
+      else if (
+        !user_prompt ||
+        user_prompt == undefined ||
+        user_prompt == null
+      ) {
         const embed = new MessageEmbed()
-        .setTitle("Oops looks like you are missing some arguments...")
-        .setThumbnail(resource.aw_snap)
-        .addField("Command Usage", "```" + config.prefix + "8ball {user_prompt}```")
-        .addField("user_prompt", "Your message goes here")
-        .addField("Example Usage", "```" + config.prefix + "8ball Am i happy?")
-        .setColor('#e66149');
-        message.channel.send({embeds : [embed]});
+          .setTitle("Oops looks like you are missing some arguments...")
+          .setThumbnail(resource.aw_snap)
+          .addField(
+            "Command Usage",
+            "```" + config.prefix + "8ball {user_prompt}```"
+          )
+          .addField("user_prompt", "Your message goes here")
+          .addField(
+            "Example Usage",
+            "```" + config.prefix + "8ball Am i happy?"
+          )
+          .setColor("#e66149");
+        message.channel.send({ embeds: [embed] });
       } else {
         const embed = new MessageEmbed()
           .setTitle(doRandHT())
           .setColor("RANDOM")
-          .setDescription(message.author.username + " asks: " + user_prompt.join(" "));
+          .setDescription(
+            message.author.username + " asks: " + user_prompt.join(" ")
+          );
         message.channel.send({ embeds: [embed] });
       }
     } catch (err) {
+      console.error(err);
       const embed = new MessageEmbed()
         .setTitle("Whoops, looks like something went wrong!")
         .setThumbnail(resource.aw_snap)
@@ -68,7 +82,23 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
-      message.channel.send({ embeds : [embed] }).then((m) => {
+      
+      const fs = require("fs");
+      const log = fs.createWriteStream("./logs/" + Date.now() + "_error.log", {
+        flags: "a",
+      });
+      log.write(
+        `${moment().format("YYYY-MM-DD HH:mm:ss")} - ${err.message} - ${
+          message.author.tag
+        } - ${message.author.id} - ${message.guild.name} - ${
+          message.guild.id
+        } - ${message.channel.name} - ${message.channel.id} - ${
+          message.content
+        }\n`
+      );
+      log.end();
+
+      message.channel.send({ embeds: [embed] }).then((m) => {
         m.delete({ timeout: 5000 });
       });
     }
