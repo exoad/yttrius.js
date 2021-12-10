@@ -116,7 +116,7 @@ module.exports = {
         let events = response6.body.data;
         let events_list = "",
           x = 0,
-          others = `Team Attended: ${x} events`;
+          others = `Team Attended: ${x} events\n`;
         for (var i = 0; i < events.length; i++) {
           x++;
           events_list += "==Event: " + events[i].name + "==\n";
