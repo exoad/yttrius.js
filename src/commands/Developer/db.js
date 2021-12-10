@@ -15,12 +15,10 @@ module.exports = {
   // @ts-ignore
   run: async (bot, message, args) => {
     try {
-      if(message.author.id != config.owner_id) 
-        return;
+      if (message.author.id != config.owner_id) return;
       const db = require("secure-db");
       const registered = new Database("account");
-      
-      
+      registered.reset();
     } catch (err) {
       console.error(err);
       const embed = new MessageEmbed()
