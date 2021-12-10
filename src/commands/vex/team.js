@@ -116,7 +116,7 @@ module.exports = {
         let events = response6.body.data;
         let events_list = "",
           x = 0,
-          others = `Team Attended: ${x} events\n`;
+          others = ``;
         for (var i = 0; i < events.length; i++) {
           x++;
           events_list += "==Event: " + events[i].name + "==\n";
@@ -131,9 +131,10 @@ module.exports = {
             "\n";
           events_list += "Start: " + events[i].start.substring(0, 10) + "\n";
           events_list += "--------------------\n";
-          
+
         }
         const time = Date.now();
+        others = "Total Events: " + x + "\n";
         fs.writeFile(
           `${__dirname}/../../../cache/${time}_events_teams.txt`,
           others + events_list,
