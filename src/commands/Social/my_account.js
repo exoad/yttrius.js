@@ -32,7 +32,8 @@ module.exports = {
             if (!db.has(message.author.id)) {
               m.edit(
                 "**Failed to retrieve your account**\nReason: You are not registered\nLast Reset: " +
-                  dblastreset
+                  (dblastreset == null ? "Never" : dblastreset)
+
               );
             } else {
               m.edit("Your Account information below:");
