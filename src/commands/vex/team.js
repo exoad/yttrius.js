@@ -130,6 +130,8 @@ module.exports = {
             events[i].location.country +
             "\n";
           events_list += "Start: " + events[i].start.substring(0, 10) + "\n";
+          events_list += "--------------------\n";
+          
         }
         const time = Date.now();
         fs.writeFile(
