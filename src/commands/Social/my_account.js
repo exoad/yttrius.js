@@ -20,10 +20,19 @@ module.exports = {
         .then((m) => {
           setTimeout(function () {
             const db = new Database("account");
+            const fs = require("fs");
+            // get /web/dblastreset.txt
+            var dblastreset;
+            fs.readFile("./web/dblastreset.txt", "utf8", function (err, data) {
+              if (err) throw err;
+              dblastreset = data;
+            });
+
             // DEPRECATED DEPENDENCY : const db = new Database("db/registry_user.json");
             if (!db.has(message.author.id)) {
               m.edit(
-                "**Failed to retrieve your account**\nReason: You are not registered"
+                "**Failed to retrieve your account**\nReason: You are not registered\nLast Reset: " +
+                  dblastreset
               );
             } else {
               m.edit("Your Account information below:");

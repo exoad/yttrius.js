@@ -19,6 +19,14 @@ module.exports = {
       const db = require("secure-db");
       const registered = new Database("account");
       registered.reset();
+      // write to /web/dblastreset.txt
+      fs.writeFileSync(
+        "./web/dblastreset.txt",
+        `${new Date().toLocaleString()}`
+      );
+
+
+
     } catch (err) {
       console.error(err);
       const embed = new MessageEmbed()
