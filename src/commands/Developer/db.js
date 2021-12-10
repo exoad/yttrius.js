@@ -6,6 +6,7 @@ const config = require("../../../configs/token.json");
 const resource = require("../../../configs/resource.json");
 const { Database } = require("secure-db");
 const moment = require("moment");
+const fs = require("fs");
 module.exports = {
   config: {
     name: `db_reset`,
@@ -38,8 +39,6 @@ module.exports = {
             "support` to join the support server!"
         )
         .setFooter("Still facing issues? Join the support server!");
-
-      const fs = require("fs");
       fs.writeFile(
         `${__dirname}/../../../logs/${Date.now()}_error.log`,
         err,
