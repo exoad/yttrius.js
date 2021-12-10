@@ -9,5 +9,5 @@ module.exports = async (bot) => {
       (await si.osInfo()).distro
     }`
   );
-  bot.user.setPresence({ activity: { name: ready.status }, status: "online" });
+  bot.user.setActivity(`78 servers | ??help`, { type: "WATCHING" });
 };
