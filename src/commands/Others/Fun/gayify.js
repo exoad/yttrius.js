@@ -1,3 +1,4 @@
+// legacy command
 const Discord = require("discord.js");
 const { MessageEmbed, MessageAttachment } = require("discord.js");
 module.exports = {
@@ -18,7 +19,7 @@ module.exports = {
             dynamic: true,
             size: 2048,
           });
-      message.channel.send(":rainbow_flag: Gayified!");
+      message.channel.send(":rainbow_flag: Gayified!"); // add
       message.channel.send({
         files: [
           {

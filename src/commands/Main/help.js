@@ -143,6 +143,8 @@ module.exports = {
           makeCommandList("Social", "myaccount, userdocs, register", false);
         else if (cat == "events" || cat == "event")
           makeCommandList("Robots", "team_search", false);
+        else if (cat == "others" && cat_cmd == "fun")
+          makeCommandList("Fun", "randomfact, gayify, 8ball, why", false);
       }
     } catch (err) {
       console.error(err);
