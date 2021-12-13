@@ -18,7 +18,7 @@ module.exports = {
             dynamic: true,
             size: 2048,
           });
-
+      message.channel.send(":rainbow_flag: Gayified!");
       message.channel.send({
         files: [
           {
