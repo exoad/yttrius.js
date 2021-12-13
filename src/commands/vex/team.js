@@ -110,6 +110,42 @@ module.exports = {
         //message.channel.send("Hello", attachment);
       }
 
+      async function fetchStats(team_id) {
+        const response6 = await fetch
+          .get(`https://www.robotevents.com/api/v2/teams/${team_id}/rankings`)
+          .set("Authorization", `Bearer ${config.robot_token}`);
+        let rankings = response6.body.data;
+        var i = 0;
+        var avg_rank = 0,
+          rk_sum = 0;
+        var winrate = 0;
+        var oppurtunities = 0,
+          wins = 0,
+          loss = 0,
+          ties = 0;
+        for (var rank of response2.body.data) {
+          rk_sum += rank.rank;
+          oppurtunities += rank.wins + rank.losses + rank.ties;
+          wins += rank.wins;
+          loss += rank.losses;
+          ties += rank.ties;
+          i++;
+        }
+        avg_rank = rk_sum / i;
+        winrate = wins / oppurtunities;
+
+        const embed = new MessageEmbed()
+          .setTitle("Team Stats for " + rankings.team.name)
+          .setDescription("Only Qualification matches are included")
+          .addField("Total Comps", `${i}`, true)
+          .addField("Average Rank", `${avg_rank}`, true)
+          .addField("Winrate", `${winrate}`, true)
+          .addField("Wins", `${wins}`, true)
+          .setColor("RANDOM")
+
+        message.channel.send({ embeds: [embed] });
+      }
+
       async function fetchEvents(team_id) {
         const response6 = await fetch
           .get(`https://www.robotevents.com/api/v2/teams/${team_id}/events`)
@@ -226,6 +262,9 @@ module.exports = {
       } else if (option === "events") {
         const team_id = response2.body.data[0].id;
         fetchEvents(team_id);
+      } else if (option === "stats") {
+        const team_id = response2.body.data[0].id;
+        fetchStats(team_id);
       }
     } catch (err) {
       console.error(err);
