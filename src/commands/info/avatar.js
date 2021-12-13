@@ -45,7 +45,7 @@ module.exports = {
             `:white_check_mark: ${message.author.username}\'s Profile Picture:`
           )
           .setImage(`${avatar + "?size=1024"}`);
-        message.channel.send({ embed });
+        message.channel.send({ embeds: [embed] });
       }
     } catch (err) {
       console.error(err);
