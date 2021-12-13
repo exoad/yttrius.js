@@ -1,19 +1,3 @@
-const flags = {
-  DISCORD_EMPLOYEE: `:<:yttrius_discord:802601271713988638> \`Discord Employee\``,
-  DISCORD_PARTNER: `<:yttrius_partnered:802601271684366346> \`Partnered Server Owner\``,
-  BUGHUNTER_LEVEL_1: `<:yttrius_bughunter:802601556633452594>\`Bug Hunter (Level 1)\``,
-  BUGHUNTER_LEVEL_2: `<:yttrius_bughunter:802601556633452594> \`Bug Hunter (Level 2)\``,
-  HYPESQUAD_EVENTS: `<:yttrius_events:802601271684235264> \`HypeSquad Events\``,
-  HOUSE_BRAVERY: `<:yttrius_bravery:802599936579469392> \`House of Bravery\``,
-  HOUSE_BRILLIANCE: `<:yttrius_brilliance:802599936356515871> \`House of Brilliance\``,
-  HOUSE_BALANCE: `<:yttrius_balance:802599936385744916> \`House of Balance\``,
-  EARLY_SUPPORTER: `<:yttrius_early:802600221061283890> \`Early Supporter\``,
-  TEAM_USER: 'Team User',
-  SYSTEM: 'System',
-  VERIFIED_BOT: `<:yttrius_bot:802600345045172254><a:8740_developer_transparent:802599936939917352> \`Verified Bot\``,
-  VERIFIED_DEVELOPER: `<a:8740_developer_transparent:802599936939917352> \`Early Verified Bot Developer\``
-};
-
 const status = {
   online: `:green_circle: \`Online\``,
   idle: `:yellow_circle: \`Idle\``,
@@ -28,7 +12,6 @@ module.exports = {
         aliases: [`uinfo`, `whois`, `ui`]
     },
     run: async (bot, message, args) => {
-    /*if(message.author.id != '709776016314204283') return message.reply('Hey there!\nThis command is currently being improved/worked on!\nJoin my discord server for further info: ``https://discord.gg/wTAcPZxwqq``\n*Sorry for the inconvenience*\n||To Check for all down commands use >>down||') */
         const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
         let avatar = message.mentions.users.size ? message.mentions.users.first().avatarURL({ format: 'png', dynamic: true, size: 2048 }) : message.author.avatarURL({ format: 'png', dynamic: true, size: 2048 });
 
