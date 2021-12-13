@@ -236,5 +236,19 @@
         "description": "Search for a Robotics team in the database",
         "usage": "team_search {team_name} <option>",
         "alias": "No Aliases"
+    },
+    "gayify": {
+        "name": "Gayify",
+        "group": "Fun",
+        "description": "Gayify your avatar or somebody else's avatar",
+        "usage": "gayify {user}",
+        "alias": "gay"
+    },
+    "gay": {
+        "name": "Gayify",
+        "group": "Fun",
+        "description": "Gayify your avatar or somebody else's avatar",
+        "usage": "gay {user}",
+        "alias": "gayify"
     }
 }
