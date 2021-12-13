@@ -1,0 +1,48 @@
+const { MessageEmbed } = require('discord.js');
+module.exports = {
+  config: {
+      name: ``,
+      category: '',
+      description: '',
+      aliases: [``]
+  },
+  run: async (bot, message, args) => {
+    try {
+
+  } catch (err) {
+      console.log(err)
+      return message.channel.send(`Oh no, an error occurred!\nThis error has been marked in the devlogs and will be reviewed soon\n*Sorry for the inconvenience.`);
+      bot.channels.cache.get('').send(`${err.stack}`)
+  }
+}
+}
+
+
+const talkedRecently = new Set();
+
+module.exports = {
+    config: {
+        name: ``,
+    },
+    
+    run: async (bot, message, args) => {
+        if (talkedRecently.has(message.author.id)) {
+            message.reply("Woah! Relax! This command is on cooldown for 1 minute! ");
+    } else {
+
+
+
+        talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          talkedRecently.delete(message.author.id);
+        }, 60000);
+    }
+        //error handler and listener
+    const token = process.env.token;
+    bot.on("error", () => { bot.login(token) });
+    }
+}
+
+
+../...

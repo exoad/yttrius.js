@@ -1,0 +1,422 @@
+{
+  "kick": {
+    "name": "Kick",
+    "group": "Moderation",
+    "description": "Kicks a member from the current server.",
+    "usage": ">>kick {user} {reason}"
+  },
+  "ban": {
+    "name": "Ban",
+    "group": "Moderation",
+    "description": "Bans a member from the current server.",
+    "usage": ">>ban {user} {reason}"
+  },
+  "8ball": {
+    "name": "8ball",
+    "group": "Fun",
+    "description": "8ball! :8ball:",
+    "usage": ">>8ball {message}"
+  },
+  "urban": {
+    "name": "Urban",
+    "group": "Images & Media",
+    "description": "Get a definition from Urban Dictionary!",
+    "usage": ">>urban or >>define"
+  },
+  "define": {
+    "name": "Urban",
+    "group": "Images & Media",
+    "description": "Get a definition from Urban Dictionary!",
+    "usage": ">>urban or >>define"
+  },
+  "kill": {
+    "name": "Kill",
+    "group": "Fun",
+    "description": "Murder someone",
+    "usage": ">>kill {user/user_message}"
+  },
+  "gulag": {
+    "name": "Gulag",
+    "group": "Fun",
+    "description": "Send someone to gulag",
+    "usage": ">>gulag {user}"
+  },
+  "meme": {
+    "name": "Meme",
+    "group": "Fun, Images & Media!",
+    "description": "Gets a meme from Reddit! r/memes",
+    "usage": ">>meme"
+  },
+  "dadjoke": {
+    "name": "Dadjoke",
+    "group": "Fun",
+    "description": "Gets a corny/cringy dad joke",
+    "usage": ">>dadjoke"
+  },
+  "vote": {
+    "name": "Vote",
+    "group": "Fun",
+    "description": "A little vote command",
+    "usage": ">>vote {user_message}"
+  },
+  "triggered": {
+    "name": "Triggered",
+    "group": "Fun",
+    "description": "Make your PFP triggered",
+    "usage": ">>trigger {user/or no}"
+  },
+  "rolldice": {
+    "name": "RollDice",
+    "group": "Fun",
+    "description": "Roll a dice! (1-6)",
+    "usage": ">>rolldice"
+  },
+  "coinflip": {
+    "name": "Coinflip",
+    "group": "Fun",
+    "description": "Flip a coin!",
+    "usage": ">>flip"
+  },
+  "embedecho": {
+    "name": "EmbedEcho",
+    "description": "Echo a message in embed!",
+    "group": "Fun",
+    "usage": ">>embedecho {user_message}"
+  },
+  "echo": {
+    "name": "Echo",
+    "group": "Fun",
+    "description": "Echo a message!",
+    "usage": ">>echo {user_message}"
+  },
+  "owo": {
+    "name": "OwO",
+    "group": "Fun",
+    "description": "OwOify your message!",
+    "usage": ">>owo {user_message}"
+  },
+  "wran": {
+    "name": "Wran",
+    "group": "Fun",
+    "description": "A joke warn command",
+    "usage": ">>wran {user} {reason}"
+  },
+  "textflip": {
+    "name": "Textflip",
+    "group": "Fun",
+    "description": "Flip your text!",
+    "usage": ">>textflip {user_message}"
+  },
+  "sthought": {
+    "name": "Sthought",
+    "group": "Images & Media!",
+    "description": "Shower thoughts from Reddit! r/showerthoughts",
+    "usage": ">>sthought"
+  },
+  "bann": {
+    "name": "Bann",
+    "group": "Fun",
+    "description": "A joke ban command. Be careful",
+    "usage": ">>ban {user} {reason}"
+  },
+  "avatar": {
+    "name": "Avatar",
+    "description": "Get a user's avatar!",
+    "group": "Info & Utility",
+    "usage": ">>avatar {user}"
+  },
+  "serverinfo": {
+    "name": "ServerInfo",
+    "description": "Get the current server's info",
+    "group": "Info & Utility",
+    "usage": ">>serverinfo"
+  },
+  "botinfo": {
+    "name": "BotInfo",
+    "description": "Get information on the bot!",
+    "group": "Info & Utility",
+    "usage": ">>botinfo"
+  },
+  "userinfo": {
+    "name": "UserInfo",
+    "description": "Get info on a user!",
+    "group": "Info & Utility",
+    "usage": ">>userinfo {user}"
+  },
+  "ping": {
+    "name": "Ping",
+    "description": "Get the bot's ping!",
+    "group": "Info & Utility",
+    "usage": ">>ping"
+  },
+  "status": {
+    "name": "Status",
+    "description": "Get status on other Yttrius Bots!",
+    "group": "Info & Utility",
+    "usage": ">>status"
+  },
+  "suggest": {
+    "name": "Suggest",
+    "description": "Suggest a feature to the bot directly to the developer(s)!",
+    "group": "Info & Utility",
+    "usage": ">>suggest {user_suggestion}"
+  },
+  "report": {
+    "name": "Report",
+    "description": "See an error with the bot's code? Report it directly to the developer(s)!",
+    "group": "Info & Utility",
+    "usage": ">>report {user_report}"
+  },
+  "invite": {
+    "name": "Invite",
+    "description": "Invite Yttrius to your own discord server(s) and/or join the Yttrius support server!",
+    "group": "Info & Utility",
+    "usage": ">>invite"
+  },
+  "tempconvert": {
+    "name": "TempConvert",
+    "description": "Convert temperature!",
+    "group": "Math & Science",
+    "usage": ">>temconvert then follow the instructions"
+  },
+  "tribute": {
+    "name": "Tribute",
+    "description": "Pay tribute to Adobe flash.",
+    "group": "Fun",
+    "usage": ">>tribute"
+  },
+  "mcplayer": {
+    "name": "MCPLAYER",
+    "description": "Get information on a Minecraft player using the UUID!\nTo get the UUID use ``>>uuid``",
+    "group": "Minecraft",
+    "usage": ">>mcplayer {uuid}"
+  },
+  "uuid": {
+    "name": "UUID",
+    "description": "Convert a username to a UUID",
+    "group": "Minecraft",
+    "usage": ">>uuid {username}"
+  },
+  "weather": {
+    "name": "Weather",
+    "description": "Get the weather of somewhere in the world!",
+    "group": "Math & Science",
+    "usage": ">>weather {place}"
+  },
+  "covid": {
+    "name": "COVID",
+    "description": "Get data about the COVID-19 Pandemic",
+    "group": "Images & Media",
+    "usage": ">>covid {list/all}"
+  },
+  "time": {
+    "name": "Time",
+    "description": "Find the time of somewhere else in the world",
+    "group": "Images & Media",
+    "usage": ">>time {location}"
+  },
+  "down": {
+    "name": "Down Commands",
+    "description": "See what commands are down for maintenance/improvement",
+    "group": "Info",
+    "usage": ">>down"
+  },
+  "create": {
+    "name": "Meme Create",
+    "description": "Customize an image! Type ``>>create`` for further info",
+    "group": "Images & Media",
+    "usage": ">>create {template_name} {arguments}"
+  },
+  "fact": {
+    "name": "Random Fact",
+    "description": "Get a random fact",
+    "group": "Fun",
+    "usage": ">>fact"
+  },
+  "why": {
+    "name": "Why?",
+    "description": "Why?",
+    "group": "Fun",
+    "usage": ">>why"
+  },
+  "youtube": {
+    "name": "Youtube",
+    "description": "Search youtube!",
+    "group": "Images & Media",
+    "usage": ">>youtube {message}"
+  },
+  "lizard": {
+    "name": "Lizard",
+    "description": "Get a random lizard",
+    "group": "Images & Media",
+    "usage": ">>lizard"
+  },
+  "insult": {
+    "name": "Insult",
+    "description": "Insult someone",
+    "group": "Fun",
+    "usage": ">>insult {message_optional}"
+  },
+  "joke": {
+    "name": "Jokes",
+    "description": "Get a random joke",
+    "group": "Fun",
+    "usage": ">>joke {pun/dark/any}"
+  },
+  "delete":{
+    "name":"Delete",
+    "description":"Deletes messages in a value of 2-100",
+    "group":"Moderation",
+    "usage":">>delete {2-100}"
+  },
+  "createinvite":{
+    "name":"Create invite",
+    "description":"Get a server invite for the current Guild Channel",
+    "group":"Info & Utility",
+    "usage":">>cinvite {channel_id}"
+  },
+  "hug":{
+    "name":"Hug!",
+    "description":"Hug a user!",
+    "group":"Fun, Images & Media!",
+    "usage":">>hug {user_mention}"
+  },
+  "goose":{
+    "name":"Goose",
+    "description":"Gets a random geese/goose",
+    "group":"Images & Media",
+    "usage":">>goose"
+  },
+  "geese": {
+      "name": "Goose",
+      "description": "Gets a random geese/goose",
+      "group": "Images & Media",
+      "usage": ">>goose"
+    },
+  "advice":{
+    "name":"Advice",
+    "description":"Get a random advice/tip!",
+    "group":"Images & Media",
+    "usage":">>advice"
+  },
+  "tip": {
+      "name": "Advice",
+      "description": "Get a random advice/tip!",
+      "group": "Images & Media",
+      "usage": ">>advice"
+    },
+  "removerole": {
+      "name":"Removerole",
+      "description":"Remove a role from the user",
+      "group":"Moderation",
+      "usage":">>removerole {user} {role}"
+  },
+  "addrole": {
+    "name":"Addrole",
+    "description":"Add a role to the user",
+    "group":"Moderation",
+    "usage":">>addrole {user} {role}"
+  },
+  "cat":{
+    "name":"Cat",
+    "description":"Get a random cat",
+    "group":"Images & Media",
+    "usage":">>cat {optional: fact}"
+  },
+  "yesno":{
+    "name":"YesNo",
+    "description":"Yes or no",
+    "group":"Fun",
+    "usage":">>yesno {message}"
+  },
+  "yn":{
+    "name":"YesNo",
+    "description":"Yes or no",
+    "group":"Fun",
+    "usage":">>yesno {message}"
+  },
+  "bubblewrap":{
+  "name":"BubbleWrap",
+  "description":"Bubblewrap go pop!",
+  "group":"Fun",
+  "usage":">>bubblewrap"
+  },
+  "nasa":{
+    "name":"Nasa",
+    "description":"Get daily history from Nasa!",
+    "group":"Math & Science",
+    "usage":">>nasa"
+  },
+  "gituser":{
+    "name":"GitUser",
+    "description":"Get info on a github user!",
+    "group":"Images & Media",
+    "usage":">>gituser {user}"
+  },
+  "fox":{
+    "name":"Fox",
+    "description":"Get a random fox",
+    "group":"Images & Media",
+    "usage":">>fox {optional: fact}"
+  },
+  "leakmyinfo":{
+    "name":"LeakMyInfo",
+    "description":"Leak your information ||Real? No||",
+    "group":"Fun",
+    "usage":">>leakmyinfo"
+  },
+  "mcserver":{
+    "name":"MCSERVER",
+    "description":"Get the info on a minecraft server",
+    "group":"Minecraft",
+    "usage":">>mcserver mc.server.net"
+  },
+  "imbored":{
+    "name":"IM BORED",
+    "description":"Get something interesting to fulfill your boredom",
+    "group":"Images & Media",
+    "usage":">>imbored"
+  },
+  "gay":{
+    "name":"GAY",
+    "description":"Overlays your profile picture (or someone elses) with a rainbow)",
+    "group":"Fun",
+    "usage":">>gay {optional: user}"
+  },
+  "wasted":{
+    "name":"Wasted",
+    "description":"Uploads an image with a Wasted Overlay (GTA Context)",
+    "group":"Fun",
+    "usage":">>wasted {optional: user}"
+  },
+	"random": {
+		"name":"Random",
+		"description":"Get random stuff (see command without arguments for details)",
+		"group":"Images & Media",
+		"usage":">>random {without arguments for more details}"
+	},
+	"calc": {
+		"name":"Calc",
+		"description":"Advanced Math Calculator, see the command without parameters for more information",
+		"group":"Math & Science",
+		"usage":">>calc {see command without parameters for more details}"
+	},
+	"evaluate": {
+		"name":"evaluate",
+		"description":"Simplified Math Calculator, see the command without parameters for more information",
+		"group":"Math & Science",
+		"usage":">>evaluate {user.expression}"
+	},
+	"inspire":{
+		"name":"Inspire",
+		"description":"Get inspired by AI generated quotes",
+		"group":"Images & Media",
+		"usage":">>inspire"
+	},
+	"rep":{
+		"name":"Rep",
+		"description":"Give someone a reputation point!",
+		"group":"Fun",
+		"usage":">>rep {list/add} {user}"
+	}
+}
