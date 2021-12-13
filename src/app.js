@@ -8,6 +8,7 @@ const bot = new Discord.Client({
 const express = require("express");
 const app = express();
 const port = 3000;
+const keep_alive = require(`./keep_alive.js`);
 
 // @ts-ignore
 app.get("/", (req, res) => res.send("Online."));
