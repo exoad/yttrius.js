@@ -113,7 +113,8 @@ module.exports = {
       async function fetchStats(team_id) {
         const response6 = await fetch
           .get(`https://www.robotevents.com/api/v2/teams/${team_id}/rankings`)
-          .set("Authorization", `Bearer ${config.robot_token}`);
+          .set("Authorization", `Bearer ${config.robot_token}`)
+          .set("Accept", "application/json");
         let rankings = response6.body.data;
         var i = 0;
         var avg_rank = 0,
@@ -138,9 +139,9 @@ module.exports = {
           .setTitle("Team Stats for " + response6.body.data[0].team.name)
           .setDescription("Only Qualification matches are included")
           .addField("Total Comps", `${i}`, true)
-          .addField("Average Rank", `${avg_rank}`, true)
-          .addField("Winrate", `${winrate}`, true)
-          .addField("Wins", `${wins}`, true)
+          .addField("Average Rank", `${avg_rank == 0 || avg_rank == undefined ? "NONE" : avg_rank}`, true)
+          .addField("Winrate", `${winrate == 0 || winrate == undefined ? "0" : winrate}%`, true)
+          .addField("Wins", `${wins == undefined ? "error" : wins}`, true)
           .setColor("RANDOM")
 
         message.channel.send({ embeds: [embed] });
