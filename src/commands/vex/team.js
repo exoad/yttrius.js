@@ -135,7 +135,7 @@ module.exports = {
         winrate = wins / oppurtunities;
 
         const embed = new MessageEmbed()
-          .setTitle("Team Stats for " + rankings.team.name)
+          .setTitle("Team Stats for " + response6.body.data[0].team.name)
           .setDescription("Only Qualification matches are included")
           .addField("Total Comps", `${i}`, true)
           .addField("Average Rank", `${avg_rank}`, true)
