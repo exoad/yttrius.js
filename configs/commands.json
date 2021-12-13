@@ -250,5 +250,12 @@
         "description": "Gayify your avatar or somebody else's avatar",
         "usage": "gay {user}",
         "alias": "gayify"
+    },
+    "ping": {
+        "name": "Bot Latency",
+        "group":"General",
+        "description": "Get the bot's ping and latency",
+        "usage": "ping",
+        "alias": "No Aliases"
     }
 }

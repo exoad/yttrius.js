@@ -129,7 +129,7 @@ module.exports = {
         else if (cat == "general")
           makeCommandList(
             "General",
-            "help, support, cmd, invite, docs, botinfo, guide",
+            "help, support, cmd, invite, docs, botinfo, guide, ping",
             false
           );
         else if (cat == "tools" || cat == "tool")
