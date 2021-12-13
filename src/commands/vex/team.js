@@ -139,8 +139,8 @@ module.exports = {
           .setTitle("Team Stats for " + response6.body.data[0].team.name)
           .setDescription("Only Qualification matches are included")
           .addField("Total Comps", `${i}`, true)
-          .addField("Average Rank", `${avg_rank == 0 || avg_rank == undefined ? "NONE" : avg_rank}`, true)
-          .addField("Winrate", `${winrate == 0 || winrate == undefined ? "0" : winrate}%`, true)
+          .addField("Average Rank", `${avg_rank == 0 || avg_rank == undefined ? "NONE" : Math.floor(avg_rank)}`, true)
+          .addField("Winrate", `${winrate == 0 || winrate == undefined ? "0" : Math.floor(winrate * 100)}%`, true)
           .addField("Wins", `${wins == undefined ? "error" : wins}`, true)
           .setColor("RANDOM")
 
