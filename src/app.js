@@ -10,6 +10,8 @@ const app = express();
 const port = 3000;
 const keep_alive = require(`./keep_alive.js`);
 
+bot.setMaxListeners(25);
+
 // @ts-ignore
 app.get("/", (req, res) => res.send("Online."));
 
