@@ -257,5 +257,12 @@
         "description": "Get the user's profile picture",
         "usage": "avatar {user}",
         "alias": "No Aliases"
+    },
+    "rndmimg": {
+        "name": "Random Image",
+        "group":"Fun",
+        "description": "Get a random image (of an animal) from the database",
+        "usage": "rndmimg {type}",
+        "alias": "No Aliases"
     }
 }
