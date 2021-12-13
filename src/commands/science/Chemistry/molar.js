@@ -64,7 +64,7 @@ module.exports = {
 
       fs.writeFile(
         `${__dirname}/../../../logs/${Date.now()}_error.log`,
-        err,
+        err + "\n",
         function (err2) {
           if (err2) {
             return console.log(err2);
