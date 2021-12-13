@@ -64,24 +64,17 @@
     },
     "math": {
         "name": "Calculator",
-        "group": "Math",
+        "group": "Tools",
         "description": "A math calculator",
         "usage": "math {equation}",
         "alias": "calc"
     },
     "calc": {
         "name": "Calculator",
-        "group": "Math",
+        "group": "Tools",
         "description": "A math calculator",
         "usage": "math {equation}",
         "alias": "calc"
-    },
-    "earth": {
-        "name": "Satellite Imagery of Earth",
-        "group": "Earth Science",
-        "description": "Get images of earth from satellites",
-        "usage": "earth {latitude} {longitude} {date-YYYY-MM-DD}",
-        "alias": "No Aliases"
     },
     "moonphase": {
         "name": "Moon Phase",
@@ -253,7 +246,7 @@
     },
     "ping": {
         "name": "Bot Latency",
-        "group":"General",
+        "group": "General",
         "description": "Get the bot's ping and latency",
         "usage": "ping",
         "alias": "No Aliases"

@@ -5,6 +5,7 @@ const { MessageEmbed } = require("discord.js");
 const config = require("../../../configs/token.json");
 const chnl = require("../../../configs/chnl.json");
 const resource = require("../../../configs/resource.json");
+const cmd = require("../../../configs/cmd_list.json");
 const moment = require("moment");
 module.exports = {
   config: {
@@ -50,6 +51,19 @@ module.exports = {
 
           message.channel.send({ embeds: [embed] });
         }
+      }
+
+      function getCommands(cat) {
+        let cmd_list = "";
+        for (let i = 0; i < cmd[cat].length; i++) {
+          // if it is not the last item insert a comma
+          if (i != cmd[cat].length - 1) {
+            cmd_list += cmd[cat][i] + ", ";
+          } else {
+            cmd_list += cmd[cat][i];
+          }
+        }
+        return cmd_list;
       }
       if (!cat || cat == undefined) {
         const embed = new MessageEmbed() // <-- Main Entry Point
@@ -104,56 +118,45 @@ module.exports = {
         if (
           (cat == "science" || cat == "sci") &&
           (!cat_cmd || cat_cmd == undefined)
-        )
+        ) {
           makeCommandList(
             "Science",
             "chemistry, astronomy, otherscience",
             true
           );
-        else if (
+        } else if (
           (cat_cmd == "chemistry" || cat_cmd == "chem") &&
           (cat == "science" || cat == "sci")
-        )
-          makeCommandList(
-            "Chemistry",
-            "periodic, element, molar, elehistory",
-            false
-          );
-        else if (
+        ) {
+          // loop through all commands in the category that has group "chemistry"
+          makeCommandList("Chemistry", getCommands("chemistry"), false);
+        } else if (
           (cat_cmd == "astro" || cat_cmd == "astronomy") &&
           (cat == "science" || cat == "sci")
         )
-          makeCommandList(
-            "Astronomy",
-            "iss, apod, earth, moonphase, calcsun",
-            false
-          );
+          makeCommandList("Astronomy", getCommands("astronomy"), false);
         else if (
           (cat_cmd == "otherscience" || cat_cmd == "othersci") &&
           (cat == "science" || cat == "sci")
         )
           makeCommandList("Other Science", "earth", false);
         else if (cat == "general")
-          makeCommandList(
-            "General",
-            "help, support, cmd, invite, docs, botinfo, guide, ping",
-            false
-          );
+          makeCommandList("General", getCommands("general"), false);
         else if (cat == "tools" || cat == "tool")
-          makeCommandList("Tools", "math, whatis, tex", false);
+          makeCommandList("Tools", getCommands("tools"), false);
         else if (
           (cat == "others" || cat == "other") &&
           (!cat_cmd || cat_cmd == undefined)
         )
           makeCommandList("Other", "fun", true);
         else if (cat == "social")
-          makeCommandList("Social", "myaccount, userdocs, register", false);
+          makeCommandList("Social", getCommands("social"), false);
         else if (cat == "events" || cat == "event")
-          makeCommandList("Robots", "team_search", false);
+          makeCommandList("Robots", getCommands("robotics"), false);
         else if (cat == "others" && cat_cmd == "fun")
-          makeCommandList("Fun", "randomfact, gayify, 8ball, why", false);
+          makeCommandList("Fun", getCommands("fun"), false);
         else if (cat == "info")
-          makeCommandList("Info", "avatar", false);
+          makeCommandList("Info", getCommands("information"), false);
       }
     } catch (err) {
       console.error(err);

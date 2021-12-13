@@ -1,0 +1,63 @@
+{
+  "categories": [
+    "general",
+    "information",
+    "chemistry",
+    "astronomy",
+    "biology",
+    "earth science",
+    "fun",
+    "tools",
+    "social",
+    "robotics",
+    "information"
+  ],
+  "astronomy": [
+    "iss",
+    "apod",
+    "moonphase",
+    "calcsun"
+  ],
+  "chemistry": [
+    "periodic",
+    "element",
+    "molar",
+    "elementhistory"
+  ],
+  "tools": [
+    "whatis",
+    "calc",
+    "tex"
+  ],
+  "general": [
+    "help",
+    "support",
+    "invite",
+    "botinfo",
+    "docs",
+    "guide",
+    "ping",
+    "cmd"
+  ],
+  "fun": [
+    "fact",
+    "why",
+    "gay",
+    "8ball"
+  ],
+  "social": [
+    "myaccount",
+    "register",
+    "rep",
+    "userdocs"
+  ],
+  "robotics": [
+    "team_search"
+  ],
+  "information": [
+    "avatar"
+  ],
+  "others": [
+    "fun"
+  ]
+}

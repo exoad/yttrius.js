@@ -48,6 +48,7 @@ module.exports = {
           .send(
             "**Request:** " +
               message.author.username +
+              "#" +
               message.author.discriminator,
             {
               files: [
@@ -63,9 +64,7 @@ module.exports = {
               .setTitle("Debug Info")
               .addField(":inbox_tray: Input", "```latex\n" + equ + "```")
               .addField("Output Errors", "NaN");
-            message.channel.send({ embeds: [embed] }).then((m) => {
-              m.delete({ timeout: 5000 });
-            });
+            message.channel.send({ embeds: [embed] });
           });
         bot.channels.cache
           .get("839269407439978557")
