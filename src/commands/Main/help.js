@@ -83,15 +83,18 @@ module.exports = {
           )
           .addField(
             ":dividers: Social Commands",
-            `Use \`${config.prefix}help social\` to access all Account related commands`
+            `Use \`${config.prefix}help social\` to access all Account related commands`,
+            true
           )
           .addField(
             ":mag: Robot Events",
-            `Use \`${config.prefix}help events\` to access all commands related to robot events (vex)`
+            `Use \`${config.prefix}help events\` to access all commands related to robot events (vex)`,
+            true
           )
           .addField(
             ":information_source: Information",
-            `Use \`${config.prefix}help info\` to access all info commands`
+            `Use \`${config.prefix}help info\` to access all info commands`,
+            true
           )
           .setThumbnail(resource.science)
           .setFooter('The prefix is "' + config.prefix + '"!');
