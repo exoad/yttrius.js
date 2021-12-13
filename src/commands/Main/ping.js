@@ -23,7 +23,7 @@ module.exports = {
         var clientPing = Math.round(bot.pi);
 
         m.edit(
-          `>>> **:ping_pong: Pong!** \n Bot Ping: ${ping}ms\nClient Ping: ${clientPing}ms`
+          `>>> **:ping_pong: Pong!** \n Bot Ping: ${ping}ms`
         );
       });
     } catch (err) {
