@@ -257,5 +257,12 @@
         "description": "Get the bot's ping and latency",
         "usage": "ping",
         "alias": "No Aliases"
+    },
+    "avatar": {
+        "name": "User Profile Picture",
+        "group": "Information",
+        "description": "Get the user's profile picture",
+        "usage": "avatar {user}",
+        "alias": "No Aliases"
     }
 }

@@ -89,6 +89,10 @@ module.exports = {
             ":mag: Robot Events",
             `Use \`${config.prefix}help events\` to access all commands related to robot events (vex)`
           )
+          .addField(
+            ":information_source: Information",
+            `Use \`${config.prefix}help info\` to access all info commands`
+          )
           .setThumbnail(resource.science)
           .setFooter('The prefix is "' + config.prefix + '"!');
 
@@ -145,6 +149,8 @@ module.exports = {
           makeCommandList("Robots", "team_search", false);
         else if (cat == "others" && cat_cmd == "fun")
           makeCommandList("Fun", "randomfact, gayify, 8ball, why", false);
+        else if (cat == "info")
+          makeCommandList("Info", "avatar", false);
       }
     } catch (err) {
       console.error(err);
