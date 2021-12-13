@@ -124,7 +124,7 @@ module.exports = {
           wins = 0,
           loss = 0,
           ties = 0;
-        for (var rank of response2.body.data) {
+        for (var rank of response6.body.data) {
           rk_sum += rank.rank;
           oppurtunities += rank.wins + rank.losses + rank.ties;
           wins += rank.wins;
