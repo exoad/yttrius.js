@@ -44,14 +44,23 @@ module.exports = {
           try {
             const embed = new MessageEmbed()
               .setColor("RANDOM")
-              .addField(`Command Name: `, `\`${helpMe[commandName].name}\``)
-              .addField(`Category`, `\`${helpMe[commandName].group}\``)
-              .addField("Description", `\`${helpMe[commandName].description}\``)
+              .addField(
+                `Command Name: `,
+                `\`${helpMe[commandName].name}\``,
+                true
+              )
+              .addField(`Category`, `\`${helpMe[commandName].group}\``, true)
+              .addField(
+                "Description",
+                `\`${helpMe[commandName].description}\``,
+                true
+              )
               .addField(
                 "Usage",
-                `\`${config.prefix}${helpMe[commandName].usage}\``
+                `\`${config.prefix}${helpMe[commandName].usage}\``,
+                true
               )
-              .addField("Aliases", `\`${helpMe[commandName].alias}\``);
+              .addField("Aliases", `\`${helpMe[commandName].alias}\``, true);
             message.channel.send({ embeds: [embed] });
           } catch (err) {
             const embed = new MessageEmbed()
