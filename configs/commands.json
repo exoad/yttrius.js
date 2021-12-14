@@ -264,5 +264,26 @@
         "description": "Get a random image (of an animal) from the database",
         "usage": "rndmimg {type}",
         "alias": "No Aliases"
+    },
+    "serverinfo": {
+        "name": "Server Informations",
+        "group": "Information",
+        "description": "Get information regarding the server",
+        "usage": "serverinfo",
+        "alias": "No Aliases"
+    },
+    "owo": {
+        "name": "OwO",
+        "group": "Fun",
+        "description": "OwO",
+        "usage": "owo {text}",
+        "alias": "owoify"
+    }, 
+    "owoify": {
+        "name": "OwO",
+        "group": "Fun",
+        "description": "OwO",
+        "usage": "owoify {text}",
+        "alias": "owo"
     }
 }
