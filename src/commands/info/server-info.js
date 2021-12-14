@@ -39,26 +39,12 @@ module.exports = {
       const Embed = new MessageEmbed()
         .setTitle(`Guild name: ` + message.guild.name)
         .setThumbnail(message.guild.iconURL())
-        .addFields([
-          { name: "Guild-Owner:", value: `<@${guild.ownerID}>`, inline: true },
-          { name: "Server-Region:", value: guild.region, inline: true },
-          { name: "Member Count:", value: guild.memberCount, inline: true },
-          {
-            name: "Verification Level:",
-            value: message.guild.verificationLevel,
-            inline: true,
-          },
-          {
-            name: "Channel Count:",
-            value: message.guild.channels.cache.size,
-            inline: true,
-          },
-          {
-            name: "Roles:",
-            value: message.guild.roles.cache.size,
-            inline: true,
-          },
-        ])
+        .addField("Server Owner:", `<@${guild.ownerID}>`, true)
+        .addField("Server Region:", guild.region, true)
+        .addField("Member Count:", guild.memberCount, true)
+        .addField("Verification Level:", message.guild.verificationLevel, true)
+        .addField("Channel Count:", message.guild.channels.cache.size, true)
+        .addField("Roles:", message.guild.roles.cache.size, true)
         .setFooter(
           `Server ID: ${
             guild.id
