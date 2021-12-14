@@ -35,15 +35,30 @@ module.exports = {
       }
 
       const guild = message.guild;
+      let owner = await guild.fetchOwner();
       const Embed = new MessageEmbed()
         .setTitle(`Guild name: ` + message.guild.name)
-        .setThumbnail(message.guild.iconURL())
-        .addField("Server Owner:", `<@${guild.ownerID}>`, true)
-        .addField("Server Region:", guild.region, true)
-        .addField("Member Count:", guild.memberCount, true)
-        .addField("Verification Level:", message.guild.verificationLevel, true)
-        .addField("Channel Count:", message.guild.channels.cache.size, true)
-        .addField("Roles:", message.guild.roles.cache.size, true)
+        .setThumbnail(guild.iconURL())
+        .addField("Server Owner:", `${owner}`, true)
+        .addField("Member Count:", `${guild.memberCount}`, true)
+        .addField(
+          "Properties",
+          "__Is Partnered?:__ " +
+            `${guild.partnered}\n__Verified?:__ ${guild.verified}`,
+          true
+        )
+        .addField(
+          "Verification Level:",
+          `${message.guild.verificationLevel}`,
+          true
+        )
+        .addField(
+          "Channel Count:",
+          `${message.guild.channels.cache.size}`,
+          true
+        )
+        .addField("MFA / 2FA Level", `${guild.mfaLevel}`, true)
+        .addField("Roles:", `${message.guild.roles.cache.size}`, true)
         .setFooter(
           `Server ID: ${
             guild.id
