@@ -37,7 +37,7 @@ module.exports = {
             }\'s Profile Picture:`
           )
           .setImage(`${avatar}`);
-        message.channel.send({ embed });
+        message.channel.send({ embeds: [embed] });
       } else {
         const embed = new MessageEmbed()
           .setColor(10812580)
