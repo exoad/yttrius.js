@@ -35,7 +35,6 @@ module.exports = {
       }
 
       const guild = message.guild;
-      const members = message.guild.members.cache.array();
       const Embed = new MessageEmbed()
         .setTitle(`Guild name: ` + message.guild.name)
         .setThumbnail(message.guild.iconURL())
