@@ -72,9 +72,7 @@ module.exports = {
         }
       );
 
-      message.channel.send({ embeds: [embed] }).then((m) => {
-        m.delete({ timeout: 5000 });
-      });
+      message.channel.send({ embeds: [embed] });
     }
   },
 };
