@@ -208,7 +208,7 @@ module.exports = {
           )
           .addField(
             "Options",
-            `\`\`\`skills, awards\`\`\`\nNote if you do not provide an option it will default to fetching plain information on a team`
+            `\`\`\`skills, awards, stats\`\`\`\nNote if you do not provide an option it will default to fetching plain information on a team`
           )
           .addField(
             "Example Usage",
@@ -222,7 +222,7 @@ module.exports = {
         )
         .set("Authorization", `Bearer ${config.robot_token}`)
         .set("accept", "application/json");
-      if (response2.status !== 200) {
+      if (response2.status == 404 || response2.status == 400) {
         error();
       }
       if (!option || option == undefined) {
