@@ -142,6 +142,8 @@ module.exports = {
           .addField("Average Rank", `${avg_rank == 0 || avg_rank == undefined ? "NONE" : Math.floor(avg_rank)}`, true)
           .addField("Winrate", `${winrate == 0 || winrate == undefined ? "0" : Math.floor(winrate * 100)}%`, true)
           .addField("Wins", `${wins == undefined ? "error" : wins}`, true)
+          .addField("Losses", `${loss == undefined ? "error" : loss}`, true)
+          .addField("Ties", `${ties == undefined ? "error" : ties}`, true)
           .setColor("RANDOM")
 
         message.channel.send({ embeds: [embed] });
