@@ -81,7 +81,7 @@ module.exports = {
         return message.channel.send({ embeds: [embed_no_code] });
       }
       let formatted = prettier.format(code, {
-        parser: lang,
+        parser: (lang == "js" || lang == "javascript" ? "babel" : lang),
         semi: false,
         singleQuote: true,
         trailingComma: "none",
