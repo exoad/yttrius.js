@@ -1,0 +1,14 @@
+// This file holds all of the emojis for shorthand usage of them without hassle
+// If this run without the proper origin server, these emojis will not work and shall be replaced with the proper ones
+// Courtesy of the USACO discord server for these emojis >.<
+[{
+
+    "emt_yes": "<:emt_cos:923323186811133983>",
+    "emt_hug": "<:emt_hug:923323186941145148>",
+    "emt_lov": "<:emt_lov:923323186832113674>",
+    "emt_no": "<:emt_no:923323186605588481>",
+    "emt_pat": "<:emt_pat:923323186794364928>",
+    "emt_sip": "<:emt_sip:923323186844692520>",
+    "emt_swe": "<:emt_swe:923323186953719858>"
+  
+}]

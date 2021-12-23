@@ -20,6 +20,7 @@
     "node-superfetch": "^0.2.3",
     "panlang": "0.0.2",
     "path": "^0.12.7",
+    "prettier": "^2.5.1",
     "random-frog": "^2.0.0",
     "secure-db": "^1.5.1",
     "star-colors": "^1.0.0",
