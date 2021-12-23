@@ -20,7 +20,15 @@ module.exports = {
     try {
       let lang = args[0];
       let code = args.slice(1).join(" ");
-      if (!lang) {
+      let avaliable_langs = [
+        "javascript",
+        "typescript",
+        "html",
+        "json",
+        "js",
+        "ts",
+      ];
+      if (!lang || !avaliable_langs.includes(lang)) {
         const embed_no_lang = new MessageEmbed()
           .setTitle(
             "Whoops, looks like that wasn't a recognized language / parser!"
