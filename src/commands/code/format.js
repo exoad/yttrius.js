@@ -98,7 +98,8 @@ module.exports = {
       });
       let embed = new MessageEmbed()
         .setTitle("Formatted Code")
-        .setDescription("```" + lang + "\n" + formatted + "```");
+        .setDescription("```" + lang + "\n" + formatted + "```")
+        .setAuthor(message.author.username, message.author.avatarURL());
 
       message.channel.send({ embeds: [embed] });
     } catch (err) {
