@@ -7,6 +7,7 @@ const resource = require("../../../configs/resource.json");
 const { Database } = require("secure-db");
 const moment = require("moment");
 const fs = require("fs");
+const prettier = require("prettier");
 module.exports = {
   config: {
     name: `format`,
@@ -25,14 +26,28 @@ module.exports = {
       if (!code) {
         return message.reply("Please specify the code!");
       }
-      // use prettier to format code
-      let formatted = require("prettier").format(code, {
+      let formatted = prettier.format(code, {
         parser: lang,
-        // @ts-ignore
-        plugins: [require("prettier-plugin-unicode-regexp")],
+        semi: false,
+        singleQuote: true,
+        trailingComma: "none",
+        printWidth: 100,
+        tabWidth: 2,
+        useTabs: false,
+        bracketSpacing: true,
+        arrowParens: "always",
+        requirePragma: false,
+        insertPragma: false,  
+        proseWrap: "preserve",
+        htmlWhitespaceSensitivity: "strict",
+        endOfLine: "lf",
       });
-      // send formatted code
-      message.channel.send(formatted);
+      let embed = new MessageEmbed()
+        .setTitle("Formatted Code")
+        .setDescription("```"+ formatted + "```")
+
+      message.channel.send({ embeds: [embed] });
+
       
     } catch (err) {
       console.error(err);
