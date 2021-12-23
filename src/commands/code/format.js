@@ -44,7 +44,7 @@ module.exports = {
       });
       let embed = new MessageEmbed()
         .setTitle("Formatted Code")
-        .setDescription("```"+ formatted + "```")
+        .setDescription("```"+lang+"\n"+ formatted + "```")
 
       message.channel.send({ embeds: [embed] });
 
