@@ -81,7 +81,7 @@ module.exports = {
         return message.channel.send({ embeds: [embed_no_code] });
       }
       let formatted = prettier.format(code, {
-        parser: (lang == "js" || lang == "javascript" ? "babel" : lang),
+        parser: lang == "js" || lang == "javascript" ? "babel" : lang,
         semi: false,
         singleQuote: true,
         trailingComma: "none",
@@ -99,8 +99,8 @@ module.exports = {
       let embed = new MessageEmbed()
         .setTitle("Formatted Code")
         .setDescription("```" + lang + "\n" + formatted + "```")
-        .setAuthor(message.author.username, message.author.avatarURL());
-
+        .setAuthor(message.author.username, message.author.avatarURL())
+        .setFooter("Code Formatted is done by a real human ;)");
       message.channel.send({ embeds: [embed] });
     } catch (err) {
       console.error(err);
