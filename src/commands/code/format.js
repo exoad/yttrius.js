@@ -21,10 +21,56 @@ module.exports = {
       let lang = args[0];
       let code = args.slice(1).join(" ");
       if (!lang) {
-        return message.reply("Please specify a language!");
+        const embed_no_lang = new MessageEmbed()
+          .setTitle(
+            "Whoops, looks like that wasn't a recognized language / parser!"
+          )
+          .setDescription(
+            "This format command currently requries a specified parser or language in order to work.\n\n"
+          )
+          .addField(
+            "Command Syntax",
+            "`" + config.prefix + "format <language> <code>`"
+          )
+          .addField(
+            "<language>",
+            "The language or parser you want to use to format your code.\n\n```js, json, typescript, html```"
+          )
+          .addField(
+            "<code>",
+            "The code you want to format.\n\nThis can be a pastebin link, or a code copied."
+          )
+          .addField(
+            "Example Usage",
+            "`" + config.prefix + "format js 'console.log(\"Hello World!\")'`"
+          );
+
+        return message.channel.send({ embeds: [embed_no_lang] });
       }
       if (!code) {
-        return message.reply("Please specify the code!");
+        const embed_no_code = new MessageEmbed()
+          .setTitle("Whoops, looks like you forgot some code!")
+          .setDescription(
+            "This format command currently requries a specified parser or language in order to work.\n\n"
+          )
+          .addField(
+            "Command Syntax",
+            "`" + config.prefix + "format <language> <code>`"
+          )
+          .addField(
+            "<language>",
+            "The language or parser you want to use to format your code.\n\n```js, json, typescript, html```"
+          )
+          .addField(
+            "<code>",
+            "The code you want to format.\n\nThis can be a pastebin link, or a code copied."
+          )
+          .addField(
+            "Example Usage",
+            "`" + config.prefix + "format js 'console.log(\"Hello World!\")'`"
+          );
+
+        return message.channel.send({ embeds: [embed_no_code] });
       }
       let formatted = prettier.format(code, {
         parser: lang,
@@ -37,18 +83,16 @@ module.exports = {
         bracketSpacing: true,
         arrowParens: "always",
         requirePragma: false,
-        insertPragma: false,  
+        insertPragma: false,
         proseWrap: "preserve",
         htmlWhitespaceSensitivity: "strict",
         endOfLine: "lf",
       });
       let embed = new MessageEmbed()
         .setTitle("Formatted Code")
-        .setDescription("```"+lang+"\n"+ formatted + "```")
+        .setDescription("```" + lang + "\n" + formatted + "```");
 
       message.channel.send({ embeds: [embed] });
-
-      
     } catch (err) {
       console.error(err);
       const embed = new MessageEmbed()
