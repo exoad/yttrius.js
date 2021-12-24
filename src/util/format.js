@@ -1,4 +1,4 @@
-import { MessageEmbed } from "discord.js";
+const { MessageEmbed } = require("discord.js");
 
 export function makeEmbed(content, message, lang) {
   let embed = new MessageEmbed()
