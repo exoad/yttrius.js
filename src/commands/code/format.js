@@ -8,7 +8,6 @@ const { Database } = require("secure-db");
 const moment = require("moment");
 const fs = require("fs");
 const prettier = require("prettier");
-const formatter = require("../../util/format");
 // import language pack
 const langlist = require("../../../json/lang/deep_attributes.json");
 module.exports = {
@@ -21,6 +20,14 @@ module.exports = {
   // @ts-ignore
   run: async (bot, message, args) => {
     try {
+      function makeEmbed(content, message, lang) {
+        let embed = new MessageEmbed()
+          .setTitle("Formatted Code")
+          .setDescription("```" + lang + "\n" + content + "```")
+          .setAuthor(message.author.username, message.author.avatarURL())
+          .setFooter("Code Formatted is done by a real human ;)");
+        message.channel.send({ embeds: [embed] });
+      }
       let lang = args[0];
       let code = args.slice(1).join(" ");
       let avaliable_langs = [
@@ -94,7 +101,7 @@ module.exports = {
         return message.channel.send({ embeds: [embed_no_code] });
       }
       if (langlist.web.includes(lang)) {
-        formatter.makeEmbed(
+        makeEmbed(
           prettier.format(code, {
             parser: lang == "js" || lang == "javascript" ? "babel" : lang,
             semi: false,
