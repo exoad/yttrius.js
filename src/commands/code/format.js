@@ -8,12 +8,15 @@ const { Database } = require("secure-db");
 const moment = require("moment");
 const fs = require("fs");
 const prettier = require("prettier");
+const formatter = require("../../util/format");
+// import language pack
+const langlist = require("../../../json/lang/deep_attributes.json");
 module.exports = {
   config: {
     name: `format`,
     category: "",
     description: "",
-    aliases: [``],
+    aliases: [`frmt`],
   },
   // @ts-ignore
   run: async (bot, message, args) => {
@@ -27,6 +30,16 @@ module.exports = {
         "json",
         "js",
         "ts",
+        "css",
+        "scss",
+        "c++",
+        "cpp",
+        "cxx",
+        "c",
+        "java",
+        "c#",
+        "csharp",
+        "j++",
       ];
       if (!lang || !avaliable_langs.includes(lang)) {
         const embed_no_lang = new MessageEmbed()
@@ -42,7 +55,7 @@ module.exports = {
           )
           .addField(
             "<language>",
-            "The language or parser you want to use to format your code.\n\n```js, json, typescript, html```"
+            "The language or parser you want to use to format your code.\n\n```js, json, typescript, html, css, scss, c++, c, c#, java```"
           )
           .addField(
             "<code>",
@@ -80,28 +93,28 @@ module.exports = {
 
         return message.channel.send({ embeds: [embed_no_code] });
       }
-      let formatted = prettier.format(code, {
-        parser: lang == "js" || lang == "javascript" ? "babel" : lang,
-        semi: false,
-        singleQuote: true,
-        trailingComma: "none",
-        printWidth: 100,
-        tabWidth: 2,
-        useTabs: false,
-        bracketSpacing: true,
-        arrowParens: "always",
-        requirePragma: false,
-        insertPragma: false,
-        proseWrap: "preserve",
-        htmlWhitespaceSensitivity: "strict",
-        endOfLine: "lf",
-      });
-      let embed = new MessageEmbed()
-        .setTitle("Formatted Code")
-        .setDescription("```" + lang + "\n" + formatted + "```")
-        .setAuthor(message.author.username, message.author.avatarURL())
-        .setFooter("Code Formatted is done by a real human ;)");
-      message.channel.send({ embeds: [embed] });
+      if (langlist.web.includes(lang)) {
+        formatter.makeEmbed(
+          prettier.format(code, {
+            parser: lang == "js" || lang == "javascript" ? "babel" : lang,
+            semi: false,
+            singleQuote: true,
+            trailingComma: "none",
+            printWidth: 100,
+            tabWidth: 2,
+            useTabs: false,
+            bracketSpacing: true,
+            arrowParens: "always",
+            requirePragma: false,
+            insertPragma: false,
+            proseWrap: "preserve",
+            htmlWhitespaceSensitivity: "strict",
+            endOfLine: "lf",
+          }),
+          message,
+          lang
+        );
+      }
     } catch (err) {
       console.error(err);
       const embed = new MessageEmbed()

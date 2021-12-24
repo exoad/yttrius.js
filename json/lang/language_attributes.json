@@ -1,0 +1,61 @@
+{
+  "json": [
+    "json",
+    "jsonc"
+  ],
+  "java": [
+    "java",
+    "javac",
+    "javadoc"
+  ],
+  "c++": [
+    "cpp",
+    "cxx",
+    "cc",
+    "c++",
+    "cplusplus",
+    "hxx",
+    "hpp",
+    "hh",
+    "objcxx",
+    "objcpp",
+    "objc++"
+  ],
+  "c": [
+    "c",
+    "obj-c",
+    "objc",
+    "h"
+  ],
+  "c#": [
+    "cs",
+    "csharp",
+    "c#",
+    "c-sharp",
+    "j++"
+  ],
+  "js": [
+    "babel",
+    "javascript",
+    "js"
+  ],
+  "ts": [
+    "typescript",
+    "babel-ts",
+    "babelts",
+    "ts"
+  ],
+  "html": [
+    "html",
+    "html5"
+  ],
+  "css": [
+    "css",
+    "scss"
+  ],
+  "md": [
+    "markdown",
+    "md",
+    "mdx"
+  ]
+}

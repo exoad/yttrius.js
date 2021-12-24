@@ -1,0 +1,23 @@
+{
+  "web": [
+    "js",
+    "css",
+    "html",
+    "ts",
+    "babel",
+    "scss",
+    "md",
+    "javascript",
+    "typescript",
+    "babel"
+  ],
+  "std": [
+    "cs",
+    "java",
+    "cpp",
+    "c",
+    "cxx",
+    "c++",
+    "c#"
+  ]
+}
