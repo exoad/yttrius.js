@@ -7,6 +7,7 @@ const resource = require("../../../configs/resource.json");
 const { Database } = require("secure-db");
 const moment = require("moment");
 const fs = require("fs");
+const emt = require("../../../configs/emojis.json");
 const prettier = require("prettier");
 // import language pack
 const langlist = require("../../../json/lang/deep_attributes.json");
@@ -20,12 +21,12 @@ module.exports = {
   // @ts-ignore
   run: async (bot, message, args) => {
     try {
-      function makeEmbed(content, message, lang) {
+      function makeEmbed(content, lang) {
         let embed = new MessageEmbed()
-          .setTitle("Formatted Code")
+          .setTitle("Formatted Code | " + lang.toUpperCase())
           .setDescription("```" + lang + "\n" + content + "```")
           .setAuthor(message.author.username, message.author.avatarURL())
-          .setFooter("Code Formatted is done by a real human ;)");
+          .setFooter(emt.emt_sip + "Code Formatted is done by a real human ;)");
         message.channel.send({ embeds: [embed] });
       }
       let lang = args[0];
@@ -118,9 +119,10 @@ module.exports = {
             htmlWhitespaceSensitivity: "strict",
             endOfLine: "lf",
           }),
-          message,
           lang
         );
+      } else if(langlist.std.includes(lang)) {
+
       }
     } catch (err) {
       console.error(err);
