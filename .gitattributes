@@ -1,4 +1,0 @@
-*.js linguist-language=C++
-*.json linguist-language=C
-*.log linguist-language=M4
-*.sh linguist-language=R
